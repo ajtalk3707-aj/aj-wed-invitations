@@ -1,0 +1,222 @@
+@import "tailwindcss";
+@theme {
+  --font-display: 'Noto Serif Gujarati', 'Shruti', serif;
+  --font-body: 'Hind Vadodara', 'Shruti', sans-serif;
+  --font-royal: 'Cinzel', serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-guj-title: 'Baloo Bhai 2', 'Noto Serif Gujarati', cursive;
+}
+
+html, body, #root {
+  min-height: 100%;
+}
+
+body {
+  background: #0d0a1f;
+  color: #fdf0e8;
+  font-family: var(--font-body);
+  line-height: 1.9;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #090715;
+}
+::-webkit-scrollbar-thumb {
+  background: #d97706;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
+}
+
+.foil {
+  background: linear-gradient(100deg, var(--f1, #dfab31) 20%, var(--f2, #fff2b8) 50%, var(--f1, #dfab31) 80%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: foil 6s linear infinite;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #fce096 0%, #d4af37 40%, #fff4cc 70%, #aa771c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gold-border-glow {
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.25), inset 0 0 15px rgba(245, 158, 11, 0.15);
+}
+
+.gold-btn-glow {
+  box-shadow: 0 0 25px rgba(217, 119, 6, 0.45);
+}
+
+.gold-btn-glow:hover {
+  box-shadow: 0 0 35px rgba(245, 158, 11, 0.7);
+}
+
+.whatsapp-pulse {
+  animation: waPulse 2.5s infinite;
+}
+
+@keyframes waPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+@keyframes foil {
+  to {
+    background-position: -250% 0;
+  }
+}
+
+.ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  border: 1px solid rgba(243, 220, 154, 0.25);
+  box-shadow: 0 0 50px rgba(201, 162, 74, 0.2), inset 0 0 30px rgba(201, 162, 74, 0.1);
+  animation: o1 40s linear infinite;
+  pointer-events: none;
+}
+.ring.b {
+  animation-name: o2;
+  animation-duration: 55s;
+}
+.ring.c {
+  animation-name: o3;
+  animation-duration: 48s;
+  border-color: rgba(56, 189, 248, 0.2);
+  box-shadow: 0 0 60px rgba(56, 189, 248, 0.15);
+}
+@keyframes o1 {
+  from {
+    transform: translate(-50%, -50%) rotateX(72deg) rotateZ(0);
+  }
+  to {
+    transform: translate(-50%, -50%) rotateX(72deg) rotateZ(360deg);
+  }
+}
+@keyframes o2 {
+  from {
+    transform: translate(-50%, -50%) rotateY(72deg) rotateZ(0);
+  }
+  to {
+    transform: translate(-50%, -50%) rotateY(72deg) rotateZ(-360deg);
+  }
+}
+
+/* Continuous Mandala Smooth Rotation */
+@keyframes spinContinuous {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinContinuousReverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* Continuous Floating Sparkles Upward Motion */
+@keyframes floatUpDrift {
+  0% {
+    transform: translateY(105vh) translateX(0) scale(0.6);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(50vh) translateX(25px) scale(1.1);
+    opacity: 0.8;
+  }
+  85% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-10vh) translateX(-20px) scale(0.7);
+    opacity: 0;
+  }
+}
+
+/* Continuous Petal Floating and Tumble */
+@keyframes petalTumble {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotateZ(0deg) rotateY(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.75;
+  }
+  50% {
+    transform: translate3d(60px, 45vh, 40px) rotateZ(180deg) rotateY(180deg);
+    opacity: 0.85;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate3d(-40px, 105vh, -20px) rotateZ(360deg) rotateY(360deg);
+    opacity: 0;
+  }
+}
+
+/* Continuous Ambient Color Wave Drift */
+@keyframes auroraDrift {
+  0%, 100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.25) translate(30px, -20px);
+    opacity: 0.55;
+  }
+}
+
+/* Gentle Card Floating Animation */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float-gentle {
+  animation: floatGentle 5s ease-in-out infinite;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+.perspective-1200 {
+  perspective: 1200px;
+}
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
