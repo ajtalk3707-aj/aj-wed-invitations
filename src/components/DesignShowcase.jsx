@@ -136,22 +136,26 @@ export default function DesignShowcase({ list, onOpen, lang, t }) {
   const [activeCategory, setActiveCategory] = useState('all')
 
   const categories = [
-    { id: 'all', label: lang === 'gu' ? '✨ તમામ 3D Orbit થીમ્સ' : '✨ All 3D Orbit Themes' },
-    { id: 'gold', label: lang === 'gu' ? '👑 રોયલ ગોલ્ડ & સ્વર્ણ' : '👑 Royal Gold & Swarna' },
-    { id: 'sapphire', label: lang === 'gu' ? '🌌 ટ્વાઇલાઇટ સેફાયર' : '🌌 Twilight Sapphire' },
-    { id: 'ruby-emerald', label: lang === 'gu' ? '💎 રૂબી & એમેરાલ્ડ' : '💎 Ruby & Emerald' },
+    { id: 'all', label: t.showcase.allTab },
+    { id: 'royal', label: t.showcase.royalTab },
+    { id: 'live', label: t.showcase.liveTab },
+    { id: 'floral', label: t.showcase.floralTab },
+    { id: 'orbit', label: t.showcase.orbitTab },
   ]
 
   const filteredList = useMemo(() => {
     if (activeCategory === 'all') return list
-    if (activeCategory === 'gold') {
-      return list.filter(i => i.theme === 'royalGold' || i.theme === 'swarna3d')
+    if (activeCategory === 'royal') {
+      return list.filter(i => i.template === 'swarna-mandap' || i.template === 'royal' || i.theme === 'royalGold')
     }
-    if (activeCategory === 'sapphire') {
-      return list.filter(i => i.theme === 'twilight')
+    if (activeCategory === 'live') {
+      return list.filter(i => i.template === 'vercel-live')
     }
-    if (activeCategory === 'ruby-emerald') {
-      return list.filter(i => i.theme === 'roseRuby' || i.theme === 'emerald' || i.theme === 'marigold')
+    if (activeCategory === 'floral') {
+      return list.filter(i => i.template === 'floral' || i.template === 'marigold' || i.theme === 'marigold')
+    }
+    if (activeCategory === 'orbit') {
+      return list.filter(i => i.template === 'orbit' || i.template === 'emerald')
     }
     return list
   }, [activeCategory, list])

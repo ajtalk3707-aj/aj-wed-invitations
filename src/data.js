@@ -33,73 +33,51 @@ const mk = (id, theme, template, title, groom, bride, d1, d2, badge, url = null)
 })
 
 export const invitations = [
-  // 3D Orbit Coverflow Editions (Only 3D Orbit Coverflow Theme as requested)
+  // Deployed Vercel Live Demos (Requested by user)
   mk(
-    'jasmat-aarti-gold-orbit',
+    'jasmat-aarti-gold',
     'royalGold',
-    'orbit',
-    'Jasmat & Aarti – Royal Gold 3D Orbit',
+    'vercel-live',
+    'Jasmat & Aarti – Royal Gold Edition',
     'ચિ. જસમત',
     'ચિ. આરતી',
     '૧૨-૦૨-૨૦૨૫',
     '૧૩-૦૨-૨૦૨૫',
-    '3D Orbit Coverflow'
+    'Vercel Live Demo',
+    'https://aarti-jasmat-royal-gold.vercel.app/'
   ),
   mk(
-    'darshan-ishita-twilight-orbit',
-    'twilight',
-    'orbit',
-    'Darshan & Ishita – Twilight Sapphire 3D Orbit',
-    'ચિ. દર્શન',
-    'ચિ. ઈશિતા',
-    '૧૨-૦૨-૨૦૨૫',
-    '૧૩-૦૨-૨૦૨૫',
-    'Scroll 3D Orbit'
-  ),
-  mk(
-    'jasmat-aarti-ruby-orbit',
+    'jasmat-aarti-main',
     'roseRuby',
-    'orbit',
-    'Jasmat & Aarti – Royal Ruby 3D Orbit',
+    'vercel-live',
+    'Jasmat & Aarti – Special Wedding',
     'ચિ. જસમત',
     'ચિ. આરતી',
     '૧૨-૦૨-૨૦૨૫',
     '૧૩-૦૨-૨૦૨૫',
-    '3D Orbit Coverflow'
+    'Vercel Live Demo',
+    'https://jasmat-aarti.vercel.app/'
   ),
   mk(
-    'darshan-ishita-emerald-orbit',
-    'emerald',
-    'orbit',
-    'Darshan & Ishita – Emerald Palace 3D Orbit',
-    'ચિ. દર્શન',
-    'ચિ. ઈશિતા',
+    'jasmat-aarti-basic',
+    'sapphireModern',
+    'vercel-live',
+    'Jasmat & Aarti – Classic Edition',
+    'ચિ. જસમત',
+    'ચિ. આરતી',
     '૧૨-૦૨-૨૦૨૫',
     '૧૩-૦૨-૨૦૨૫',
-    'Scroll 3D Orbit'
+    'Vercel Live Demo',
+    'https://jasmat-aarti-basic.vercel.app/'
   ),
-  mk(
-    'darshan-ishita-swarna-orbit',
-    'swarna3d',
-    'orbit',
-    'Swarna Elegance – Imperial 3D Orbit',
-    'ચિ. દર્શન',
-    'ચિ. ઈશિતા',
-    '૧૨-૦૨-૨૦૨૫',
-    '૧૩-૦૨-૨૦૨૫',
-    'Royal 3D Orbit'
-  ),
-  mk(
-    'darshan-ishita-marigold-orbit',
-    'marigold',
-    'orbit',
-    'Marigold Festive – 3D Orbit Edition',
-    'ચિ. દર્શન',
-    'ચિ. ઈશિતા',
-    '૧૨-૦૨-૨૦૨૫',
-    '૧૩-૦૨-૨૦૨૫',
-    'Scroll 3D Orbit'
-  ),
+
+  // Built-in Interactive React Themes
+  mk('darshan-ishita-marigold', 'marigold', 'marigold', 'Marigold Block-print Theme', 'ચિ. દર્શન', 'ચિ. ઈશિતા', '૧૨-૦૨-૨૦૨૫', '૧૩-૦૨-૨૦૨૫', 'Horizontal Track'),
+  mk('darshan-ishita-royal', 'royal', 'royal', 'Royal Palace Jharokha Theme', 'ચિ. દર્શન', 'ચિ. ઈશિતા', '૧૨-૦૨-૨૦૨૫', '૧૩-૦૨-૨૦૨૫', 'Vertical Parallax & Diyas'),
+  mk('darshan-ishita-floral', 'floral', 'floral', 'Blush Floral & Blooming Card', 'ચિ. દર્શન', 'ચિ. ઈશિતા', '૧૨-૦૨-૨૦૨૫', '૧૩-૦૨-૨૦૨૫', 'Curtain Reveal & Petals'),
+  mk('darshan-ishita-orbit', 'twilight', 'orbit', '3D Orbit Coverflow Theme', 'ચિ. દર્શન', 'ચિ. ઈશિતા', '૧૨-૦૨-૨૦૨૫', '૧૩-૦૨-૨૦૨૫', 'Interactive 3D Deck'),
+  mk('darshan-ishita-emerald', 'emerald', 'emerald', 'Emerald Royal Envelope & Book', 'ચિ. દર્શન', 'ચિ. ઈશિતા', '૧૨-૦૨-૨૦૨૫', '૧૩-૦૨-૨૦૨૫', 'Wax Seal & 3D Turning Pages'),
+  mk('darshan-ishita-swarna-mandap', 'swarna3d', 'swarna-mandap', 'Swarna Elegance – Animated Royal Edition', 'ચિ. દર્શન', 'ચિ. ઈશિતા', '૧૨-૦૨-૨૦૨૫', '૧૩-૦૨-૨૦૨૫', 'Royal Elegance Edition'),
 ]
 
 export const themes = {

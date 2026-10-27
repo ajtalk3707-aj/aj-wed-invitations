@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { contactConfig } from '../translations'
 
-export default function Hero({ lang, t, onOpen, defaultInv }) {
+export default function Hero({ lang, t }) {
   const { scrollY } = useScroll()
 
   // 3D Scroll-linked transforms for the Hero teaser card
@@ -195,27 +195,17 @@ export default function Hero({ lang, t, onOpen, defaultInv }) {
               </div>
 
               <div className="mt-5 flex flex-wrap items-center justify-center gap-3 w-full">
-                {onOpen && defaultInv ? (
-                  <button
-                    type="button"
-                    onClick={() => onOpen(defaultInv)}
-                    className="cursor-pointer rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 px-6 py-2.5 text-xs sm:text-sm font-bold text-black transition shadow-[0_0_20px_rgba(245,158,11,0.4)] active:scale-95"
-                  >
-                    👁️ {lang === 'gu' ? 'લાઈવ 3D Orbit કંકોતરી જુઓ' : 'Explore Live 3D Orbit Card'}
-                  </button>
-                ) : (
-                  <a
-                    href="#designs"
-                    className="rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/40 px-5 py-2 text-xs sm:text-sm font-bold text-amber-100 transition shadow-sm"
-                  >
-                    👁️ {lang === 'gu' ? 'તમામ નમૂનાઓ જુઓ' : 'Explore All Live Themes'}
-                  </a>
-                )}
                 <a
-                  href={contactConfig.getWhatsAppLink('નમસ્તે AJ Invitation, મને 3D Orbit Coverflow કંકોતરી વિશે સંપૂર્ણ માહિતી આપો.')}
+                  href="#designs"
+                  className="rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/40 px-5 py-2 text-xs sm:text-sm font-bold text-amber-100 transition shadow-sm"
+                >
+                  👁️ {lang === 'gu' ? 'તમામ નમૂનાઓ જુઓ' : 'Explore All Live Themes'}
+                </a>
+                <a
+                  href={contactConfig.getWhatsAppLink('નમસ્તે AJ Invitation, મારે આવી રોયલ કંકોતરી બનાવડાવવી છે.')}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-xl bg-emerald-600 hover:bg-emerald-500 px-5 py-2.5 text-xs sm:text-sm font-bold text-white transition shadow-sm"
+                  className="rounded-xl bg-emerald-600 hover:bg-emerald-500 px-5 py-2 text-xs sm:text-sm font-bold text-white transition shadow-sm"
                 >
                   💬 {lang === 'gu' ? 'ઓર્ડર કરો (WhatsApp)' : 'Order Custom Card'}
                 </a>
