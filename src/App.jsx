@@ -51,8 +51,8 @@ export default function App() {
         <Navbar lang={lang} setLang={setLang} t={t} />
 
         <main className="flex-1">
-          {/* Hero Section with Extra Royal Wow Effects */}
-          <Hero lang={lang} t={t} />
+          {/* Hero Section with Extra Royal Wow Effects & Direct 3D Orbit Launch */}
+          <Hero lang={lang} t={t} onOpen={setSel} defaultInv={invitations[0]} />
 
           {/* Trust Numbers & Metrics */}
           <StatsBar t={t} />
