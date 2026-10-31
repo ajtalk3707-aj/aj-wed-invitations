@@ -25,3 +25,12 @@ dist
 .idea/
 .DS_Store
 Thumbs.db
+
+# Standalone exported projects & zip downloads
+*.zip
+marigold-blockprint-invitation/
+royal-palace-jharokha-invitation/
+blush-floral-blooming-invitation/
+orbit-3d-coverflow-invitation/
+emerald-royal-envelope-invitation/
+swarna-elegance-royal-invitation/

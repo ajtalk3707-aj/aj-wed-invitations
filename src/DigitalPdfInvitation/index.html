@@ -1,0 +1,1843 @@
+<!DOCTYPE html>
+<html lang="gu">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>શુભ વિવાહ | ડિજિટલ ગુજરાતી કંકોતરી (Digital Wedding PDF Invitation - 3 Separate Layouts)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@500;600;700;800&family=Cinzel:wght@600;700;800&family=Hind+Vadodara:wght@400;500;600;700&family=Noto+Serif+Gujarati:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Serif Gujarati', 'Hind Vadodara', serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 10px 40px;
+      transition: background 0.5s ease;
+      box-sizing: border-box;
+    }
+
+    /* Top Floating Toolbar */
+    .toolbar {
+      position: sticky;
+      top: 15px;
+      z-index: 100;
+      width: 100%;
+      max-width: 860px;
+      background: rgba(10, 5, 8, 0.88);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 215, 0, 0.35);
+      border-radius: 18px;
+      padding: 12px 18px;
+      margin-bottom: 25px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+    }
+
+    .brand-title {
+      font-family: 'Baloo Bhai 2', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      color: #ffd700;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: #fef08a;
+      opacity: 0.85;
+      display: block;
+    }
+
+    .layout-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: inherit;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-layout {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-layout.active {
+      transform: scale(1.04);
+      border-color: #ffd700;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    }
+
+    .btn-print {
+      background: linear-gradient(135deg, #ffd700, #f59e0b);
+      color: #000;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+    }
+
+    .btn-print:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.6);
+    }
+
+    .btn-audio {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+
+    /* Container for the 4 Pages */
+    .pages-container {
+      width: 100%;
+      max-width: 540px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    /* Base Card Page */
+    .card-page {
+      position: relative;
+      width: 100%;
+      min-height: 820px;
+      padding: 35px 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
+      transition: all 0.4s ease;
+      box-sizing: border-box;
+    }
+
+    .card-page>*:not(.heritage-corner):not(.darbari-corner):not(.card-corner):not(.card-bg-ornament) {
+      position: relative;
+      z-index: 2;
+    }
+
+    .sticker {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+      transition: transform 0.3s ease;
+    }
+
+    .sticker:hover {
+      transform: scale(1.05);
+    }
+
+    .foil-gold {
+      background: linear-gradient(135deg, #ffd700 0%, #ffae19 45%, #fff2a3 75%, #d4af37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    }
+
+    .foil-emerald {
+      background: linear-gradient(135deg, #fef08a 0%, #facc15 45%, #fef9c3 75%, #ca8a04 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    }
+
+    .foil-rose {
+      background: linear-gradient(135deg, #9f1239 0%, #e11d48 45%, #be123c 75%, #881337 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      filter: drop-shadow(0 1px 2px rgba(244, 63, 94, 0.3));
+    }
+
+    /* Common Info Grid */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      width: 100%;
+      text-align: left;
+      font-size: 11.5px;
+    }
+
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+      color: #000;
+      margin-top: 8px;
+    }
+
+    /* Heritage Layout 2 Events Grid with Stickers */
+    .heritage-events-box {
+      background: rgba(4, 43, 31, 0.7);
+      border: 1.5px solid rgba(250, 204, 21, 0.4);
+      border-radius: 16px;
+      padding: 10px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    .heritage-events-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      color: #fde047;
+      border-bottom: 1px solid rgba(250, 204, 21, 0.25);
+      padding-bottom: 5px;
+      margin-bottom: 8px;
+    }
+
+    .heritage-events-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .heritage-event-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(6, 78, 59, 0.6);
+      border: 1px solid rgba(250, 204, 21, 0.3);
+      border-radius: 10px;
+      padding: 6px 8px;
+      box-sizing: border-box;
+    }
+
+    .heritage-event-thumb {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(250, 204, 21, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 2px;
+      box-sizing: border-box;
+    }
+
+    .heritage-event-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .heritage-event-title {
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 11.5px;
+      line-height: 1.25;
+    }
+
+    .heritage-event-time {
+      color: #fde047;
+      font-size: 10px;
+      font-weight: 600;
+      margin-top: 1px;
+    }
+
+    /* Heritage Layout 2 Corner Floral Ornaments */
+    .heritage-corner {
+      position: absolute;
+      top: -35px;
+      width: 165px;
+      height: 245px;
+      opacity: 0.72;
+      pointer-events: none;
+      z-index: 1;
+      transition: all 0.3s ease;
+    }
+
+    .heritage-corner.left {
+      left: 10px;
+      transform: scaleX(-1);
+    }
+
+    .heritage-corner.right {
+      right: 10px;
+    }
+
+    .heritage-corner img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Mobile Responsive Rules */
+    @media (max-width: 600px) {
+      body {
+        padding: 12px 6px 30px;
+      }
+
+      .toolbar {
+        padding: 10px 12px;
+        margin-bottom: 18px;
+        border-radius: 14px;
+        gap: 8px;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .layout-buttons {
+        justify-content: center;
+      }
+
+      .btn {
+        padding: 6px 10px;
+        font-size: 11px;
+      }
+
+      .pages-container {
+        gap: 24px;
+      }
+
+      .card-page {
+        padding: 24px 14px;
+        min-height: 740px;
+        border-radius: 20px;
+      }
+
+      /* Corner floral ornament scales down on mobile so it doesn't overlap center content */
+      .heritage-corner,
+      .darbari-corner {
+        width: 105px;
+        height: 155px;
+        top: -13px;
+        opacity: 0.6;
+      }
+
+      .heritage-corner.left,
+      .darbari-corner.left {
+        left: 10px;
+      }
+
+      .heritage-corner.right,
+      .darbari-corner.right {
+        right: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      .heritage-events-grid,
+      .darbari-events-grid {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      .heritage-event-thumb,
+      .darbari-event-thumb {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      body {
+        padding: 8px 4px 20px;
+      }
+
+      .card-page {
+        padding: 18px 10px;
+        min-height: 700px;
+      }
+
+      .heritage-corner,
+      .darbari-corner {
+        width: 80px;
+        height: 120px;
+        top: 4px;
+        opacity: 0.55;
+      }
+
+      .heritage-corner.left,
+      .darbari-corner.left {
+        left: 4px;
+      }
+
+      .heritage-corner.right,
+      .darbari-corner.right {
+        right: 4px;
+      }
+
+      .heritage-events-box,
+      .darbari-events-box {
+        padding: 8px 6px;
+      }
+
+      .heritage-event-item,
+      .darbari-event-item {
+        padding: 4px 6px;
+        gap: 6px;
+      }
+
+      .info-grid {
+        gap: 6px;
+        font-size: 11px;
+      }
+    }
+
+    /* ================= LAYOUT 1: DARBARI JHAROKHA ================= */
+    body.layout-darbari {
+      background: radial-gradient(circle at 50% 25%, #35040b 0%, #110103 100%);
+      color: #fff7ed;
+    }
+
+    .layout-darbari .card-page {
+      background: radial-gradient(circle at 50% 25%, #4e0712 0%, #200206 100%);
+      color: #fff7ed;
+      border: 2px solid #d4af37;
+      border-radius: 90px 90px 24px 24px;
+    }
+
+    .layout-darbari .card-page::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1.5px solid #d4af37;
+      opacity: 0.45;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    /* Darbari Corner Floral Ornaments */
+    .darbari-corner {
+      position: absolute;
+      top: -35px;
+      width: 165px;
+      height: 245px;
+      opacity: 0.72;
+      pointer-events: none;
+      z-index: 1;
+      transition: all 0.3s ease;
+    }
+
+    .darbari-corner.left {
+      left: 10px;
+      transform: scaleX(-1);
+    }
+
+    .darbari-corner.right {
+      right: 10px;
+    }
+
+    .darbari-corner img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Darbari Events Box & Grid */
+    .darbari-events-box {
+      background: rgba(30, 2, 6, 0.75);
+      border: 1.5px solid rgba(212, 175, 55, 0.45);
+      border-radius: 16px;
+      padding: 10px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    .darbari-events-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      color: #ffd700;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      padding-bottom: 5px;
+      margin-bottom: 8px;
+    }
+
+    .darbari-events-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .darbari-event-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(88, 10, 21, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 10px;
+      padding: 6px 8px;
+      box-sizing: border-box;
+    }
+
+    .darbari-event-thumb {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 2px;
+      box-sizing: border-box;
+    }
+
+    .darbari-event-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .darbari-event-title {
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 11.5px;
+      line-height: 1.25;
+    }
+
+    .darbari-event-time {
+      color: #ffd700;
+      font-size: 10px;
+      font-weight: 600;
+      margin-top: 1px;
+    }
+
+    .darbari-badge {
+      font-size: 12px;
+      font-weight: 700;
+      color: #ffd700;
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      padding: 3px 14px;
+      border-radius: 20px;
+      background: rgba(45, 4, 9, 0.65);
+      display: inline-block;
+    }
+
+    .darbari-pill {
+      display: inline-block;
+      font-size: 10px;
+      background: rgba(88, 10, 21, 0.85);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 2px 8px;
+      border-radius: 10px;
+      color: #fef08a;
+    }
+
+    /* ================= LAYOUT 2: HERITAGE PEACOCK ================= */
+    body.layout-heritage {
+      background: radial-gradient(circle at 50% 25%, #05261d 0%, #010d0a 100%);
+      color: #f0fdf4;
+    }
+
+    .layout-heritage .card-page {
+      background: radial-gradient(circle at 50% 25%, #083c2e 0%, #021a13 100%);
+      color: #f0fdf4;
+      border: 2px solid #eab308;
+      border-radius: 28px;
+    }
+
+    .layout-heritage .card-page::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1.5px solid #facc15;
+      opacity: 0.45;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    /* ================= LAYOUT 3: MODERN BOHO FLORAL ================= */
+    body.layout-floral {
+      background: radial-gradient(circle at 50% 25%, #fed7aa 0%, #fbcfe8 50%, #f472b6 100%);
+      color: #4c0519;
+    }
+
+    .layout-floral .card-page {
+      background: linear-gradient(160deg, #fffcf9 0%, #fdf2f4 100%);
+      color: #4c0519;
+      border: 2px solid rgba(244, 63, 94, 0.4);
+      border-radius: 36px;
+    }
+
+    .layout-floral .card-page::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1.5px solid rgba(244, 63, 94, 0.3);
+      opacity: 0.5;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    /* Hide layouts not active */
+    .layout-container {
+      display: none;
+    }
+
+    .layout-container.active {
+      display: flex;
+    }
+
+    /* Print / PDF */
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+      }
+
+      .toolbar,
+      .no-print {
+        display: none !important;
+      }
+
+      .pages-container {
+        max-width: 100% !important;
+        gap: 0 !important;
+      }
+
+      .card-page {
+        page-break-after: always !important;
+        break-after: page !important;
+        height: 100vh !important;
+        min-height: 100vh !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="layout-darbari">
+
+  <!-- Control Toolbar -->
+  <div class="toolbar no-print">
+    <div>
+      <span class="brand-title">AJ INVITATION • ૩ અલગ-અલગ લેઆઉટ</span>
+      <span class="brand-sub">દરેક લેઆઉટમાં અલગ ડિઝાઈન & ખાસ સ્ટીકર્સ</span>
+    </div>
+
+    <!-- 3 Layout Selectors -->
+    <div class="layout-buttons">
+      <button class="btn btn-layout active" onclick="switchLayout('darbari', this)" style="background:#8b1528;">
+        🏛️ ૧. દરબારી જરોખા
+      </button>
+      <button class="btn btn-layout" onclick="switchLayout('heritage', this)" style="background:#064e3b;">
+        🦚 ૨. પન્ના-મોરપિચ્છ
+      </button>
+      <button class="btn btn-layout" onclick="switchLayout('floral', this)" style="background:#be185d;">
+        🌸 ૩. બોહો ફ્લોરલ
+      </button>
+    </div>
+
+    <!-- Actions -->
+    <div style="display:flex; gap:8px;">
+      <button class="btn btn-audio" onclick="toggleAudio()">
+        <span id="audioIcon">🎵</span> <span id="audioText">શરણાઈ</span>
+      </button>
+      <button class="btn btn-print" onclick="window.print()">
+        🖨️ PDF પ્રિન્ટ
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= LAYOUT 1: DARBARI JHAROKHA ================= -->
+  <div id="layout-darbari" class="layout-container active pages-container">
+    <!-- Page 1: Royal Jharokha Cover -->
+    <div class="card-page">
+      <!-- Ornate Floral Corner Ornaments -->
+      <div class="darbari-corner left">
+        <img src="./assets/dec-3.png" alt="">
+      </div>
+      <div class="darbari-corner right">
+        <img src="./assets/dec-3.png" alt="">
+      </div>
+
+      <div style="margin-top:15px;">
+        <span class="darbari-badge">
+          🪔 ॥ શ્રી ગણેશાય નમઃ ॥ 🪔
+        </span>
+        <div style="height:105px; margin:6px 0; display:flex; justify-content:center;">
+          <img src="./assets/ganesh_red.png" class="sticker" alt="Lord Ganesha">
+        </div>
+        <p style="font-size:12px; line-height:1.7; opacity:0.92; max-width:320px; margin:0 auto;">
+          વક્રતુંડ મહાકાય, સૂર્યકોટિ સમપ્રભ ।<br>નિર્વિઘ્નં કુરુ મે દેવ, સર્વકાર્યેષુ સર્વદા ॥
+        </p>
+      </div>
+
+      <!-- Royal Shubh Vivah Banner -->
+      <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; margin:8px 0;">
+        <div style="height:115px; display:flex; justify-content:center;">
+          <img src="./assets/shubh_vivah.png" class="sticker" alt="Shubh Vivah">
+        </div>
+        <span style="font-size:11px; font-weight:700; letter-spacing:2px; color:#ffd700; margin-top:2px;">
+          ॥ માંગલિક કંકોતરી ॥
+        </span>
+      </div>
+
+      <!-- Groom & Bride Jharokha Box -->
+      <div
+        style="width:100%; background:rgba(30,2,6,0.75); border:1.5px solid #d4af37; border-radius:18px; padding:12px 14px; box-shadow:0 8px 24px rgba(0,0,0,0.4);">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div style="flex:1;">
+            <span style="font-size:11px; color:#ffd700;">ચિ.</span>
+            <h3 class="foil-gold" style="font-size:30px; font-weight:800; margin:2px 0;" id="d-groom-name">દર્શન</h3>
+            <span class="darbari-pill" id="d-groom-city">જૂનાગઢ</span>
+          </div>
+          <div style="padding:0 8px; display:flex; flex-direction:column; align-items:center;">
+            <div style="height:42px; display:flex; align-items:center; justify-content:center;">
+              <img src="./assets/sticker_d10.png"
+                style="height:38px; object-fit:contain; filter:drop-shadow(0 2px 8px rgba(255,215,0,0.5));" alt="Diya">
+            </div>
+            <span style="font-size:11px; font-weight:700; color:#ffd700; margin-top:2px;">સંગ</span>
+          </div>
+          <div style="flex:1;">
+            <span style="font-size:11px; color:#ffd700;">ચિ.</span>
+            <h3 class="foil-gold" style="font-size:30px; font-weight:800; margin:2px 0;" id="d-bride-name">ઈશિતા</h3>
+            <span class="darbari-pill" id="d-bride-city">રાજકોટ</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="width:100%; border-top:1px solid rgba(212,175,55,0.35); padding-top:8px;">
+        <p style="font-size:13px; font-weight:700; color:#ffd700;" id="d-date-line">
+          વિક્રમ સંવત ૨૦૮૧, મહા સુદ પૂનમ | ગુરુવાર, ૧૩ ફેબ્રુઆરી ૨૦૨૫
+        </p>
+        <p style="font-size:11px; opacity:0.85; margin-top:2px;" id="d-family-line">
+          શ્રી રમેશભાઈ ગોવિંદભાઈ પટેલ તથા સમસ્ત પટેલ પરિવાર
+        </p>
+        <div style="font-size:10px; opacity:0.6; margin-top:4px;">AJ_Digitallab • 9687336426</div>
+      </div>
+    </div>
+
+    <!-- Page 2: Vivah Message & Couple Ritual -->
+    <div class="card-page">
+      <!-- Ornate Floral Corner Ornaments -->
+      <div class="darbari-corner left">
+        <img src="./assets/dec-3.png" alt="">
+      </div>
+      <div class="darbari-corner right">
+        <img src="./assets/dec-3.png" alt="">
+      </div>
+
+      <div style="margin-top:15px; display: grid;">
+        <span class="darbari-badge">
+          ॥ પાવન મંગલ પરિણય સંસ્કાર ॥
+        </span>
+        <h2 class="foil-gold" style="font-size:26px; margin:4px 0;">ભાવભીનું સ્નેહ નિમંત્રણ</h2>
+      </div>
+
+      <div style="height:140px; display:flex; justify-content:center; align-items:center; margin:4px 0;">
+        <img src="./assets/wedding_couple.png" class="sticker" style="filter:drop-shadow(0 6px 14px rgba(0,0,0,0.6));"
+          alt="Couple Ritual">
+      </div>
+
+      <p style="font-size:12px; line-height:1.75; text-align:justify; padding:0 8px; opacity:0.95; margin:2px 0;">
+        સ્નેહીશ્રી, પરમ કૃપાળુ પરમાત્મા શ્રી ગણેશજી અને કુળદેવીના અસીમ આશીર્વાદથી અમારા આંગણે મંગલ અવસર પધાર્યો છે.
+        અમારા સુપુત્ર <strong id="d-p2-groom-bold">ચિ. દર્શન</strong> ના શુભ વિવાહ <strong id="d-p2-bride-bold">ચિ.
+          ઈશિતા</strong> સંગ નિર્ધારિત થયેલ છે. આ પાવન
+        પ્રસંગે આપ સપરિવાર ઉપસ્થિત રહી
+        નવદંપતીને અંતઃકરણથી આશીર્વાદ આપી અમારા આનંદોત્સવમાં સહભાગી બનો એવી હાર્દિક પ્રાર્થના સહ ભાવભીનું નિમંત્રણ પાઠવીએ
+        છીએ.
+      </p>
+
+      <div class="info-grid">
+        <div
+          style="background:rgba(30,2,6,0.7); border:1px solid rgba(212,175,55,0.35); border-radius:12px; padding:10px;">
+          <strong style="color:#ffd700; font-size:12px;" id="d-p2-varpaksh-title">વરપક્ષ (ચિ. દર્શન)</strong>
+          <p style="margin-top:2px;" id="d-p2-varpaksh-father">શ્રી રમેશભાઈ ગોવિંદભાઈ પટેલ</p>
+          <p style="opacity:0.8;" id="d-p2-varpaksh-city">જૂનાગઢ (B.Tech Software)</p>
+        </div>
+        <div
+          style="background:rgba(30,2,6,0.7); border:1px solid rgba(212,175,55,0.35); border-radius:12px; padding:10px;">
+          <strong style="color:#ffd700; font-size:12px;" id="d-p2-kanyapaksh-title">કન્યાપક્ષ (ચિ. ઈશિતા)</strong>
+          <p style="margin-top:2px;" id="d-p2-kanyapaksh-father">શ્રી હસમુખભાઈ મોહનભાઈ સાવલિયા</p>
+          <p style="opacity:0.8;" id="d-p2-kanyapaksh-city">રાજકોટ (M.Sc Design)</p>
+        </div>
+      </div>
+
+      <div style="width:100%; border-top:1px solid rgba(212,175,55,0.35); padding-top:8px;">
+        <p style="font-size:11px; opacity:0.85;">
+          માંગલ્યં ભગવાન વિષ્ણુઃ, માંગલ્યં ગરુડધ્વજઃ । માંગલ્યં પુંડરીકાક્ષો, મંગલાય તનો હરિઃ ॥
+        </p>
+        <div style="font-size:10px; opacity:0.6; margin-top:4px;">AJ_Digitallab • 9687336426</div>
+      </div>
+    </div>
+
+    <!-- Page 3: Auspicious 8-Event Royal Schedule -->
+    <div class="card-page">
+      <!-- Ornate Floral Corner Ornaments -->
+      <div class="darbari-corner left">
+        <img src="./assets/dec-3.png" alt="">
+      </div>
+      <div class="darbari-corner right">
+        <img src="./assets/dec-3.png" alt="">
+      </div>
+
+      <div style="margin-top:12px;">
+        <div style="height:65px; display:flex; justify-content:center;">
+          <img src="./assets/shehnai_dhol.png" class="sticker" alt="Shehnai Dhol">
+        </div>
+        <h2 class="foil-gold" style="font-size:24px; margin:2px 0;">માંગલિક લગ્નોત્સવ કાર્યક્રમ</h2>
+        <p style="font-size:10.5px; color:#ffd700; margin-bottom:4px;">શરણાઈ અને ઢોલના સુરે માંગલિક વિધિ</p>
+      </div>
+
+      <div style="width:100%; font-size:11.5px;">
+        <!-- Day 1: બુધવાર, ૧૨ ફેબ્રુઆરી ૨૦૨૫ -->
+        <div class="darbari-events-box">
+          <div class="darbari-events-header">
+            <span id="d-day1-header">🦚 બુધવાર, ૧૨ ફેબ્રુઆરી ૨૦૨૫</span>
+            <span style="font-size:10px; opacity:0.85; font-weight:normal;" id="d-day1-label">શુભ મુહૂર્ત પ્રસંગો</span>
+          </div>
+          <div class="darbari-events-grid" id="d-day1-events">
+            <div class="darbari-event-item">
+              <div class="darbari-event-thumb">
+                <img src="./assets/logo_kalash.png" alt="મંડપ મુહૂર્ત">
+              </div>
+              <div>
+                <div class="darbari-event-title">🪔 મંડપ મુહૂર્ત</div>
+                <div class="darbari-event-time">સવારે ૦૮:૧૫ કલાકે</div>
+              </div>
+            </div>
+            <div class="darbari-event-item">
+              <div class="darbari-event-thumb">
+                <img src="./assets/haldi02.png" alt="હલ્દી રસમ">
+              </div>
+              <div>
+                <div class="darbari-event-title">🌼 હલ્દી રસમ (પીઠી)</div>
+                <div class="darbari-event-time">બપોરે ૧૧:૩૦ કલાકે</div>
+              </div>
+            </div>
+            <div class="darbari-event-item">
+              <div class="darbari-event-thumb">
+                <img src="./assets/sticker_d11.png" alt="મહેંદી મહોત્સવ">
+              </div>
+              <div>
+                <div class="darbari-event-title">🌿 મહેંદી મહોત્સવ</div>
+                <div class="darbari-event-time">બપોરે ૦૩:૩૦ કલાકે</div>
+              </div>
+            </div>
+            <div class="darbari-event-item">
+              <div class="darbari-event-thumb">
+                <img src="./assets/dadiya.png" alt="રાસ-ગરબા & સંગીત">
+              </div>
+              <div>
+                <div class="darbari-event-title">🪕 રાસ-ગરબા & સંગીત</div>
+                <div class="darbari-event-time">રાત્રે ૦૮:૩૦ કલાકે</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 2: ગુરુવાર, ૧૩ ફેબ્રુઆરી ૨૦૨૫ -->
+        <div class="darbari-events-box">
+          <div class="darbari-events-header">
+            <span id="d-day2-header">🦚 ગુરુવાર, ૧૩ ફેબ્રુઆરી ૨૦૨૫</span>
+            <span style="font-size:10px; opacity:0.85; font-weight:normal;" id="d-day2-label">લગ્ન મહોત્સવ</span>
+          </div>
+          <div class="darbari-events-grid" id="d-day2-events">
+            <div class="darbari-event-item">
+              <div class="darbari-event-thumb">
+                <img src="./assets/shehnai_dhol.png" alt="જાન પ્રસ્થાન">
+              </div>
+              <div>
+                <div class="darbari-event-title">🥁 જાન પ્રસ્થાન</div>
+                <div class="darbari-event-time">બપોરે ૦૨:૩૦ કલાકે</div>
+              </div>
+            </div>
+            <div class="darbari-event-item">
+              <div class="darbari-event-thumb">
+                <img src="./assets/marriage_mandap.png" alt="સામૈયું સ્વાગત">
+              </div>
+              <div>
+                <div class="darbari-event-title">🌸 સામૈયું સ્વાગત</div>
+                <div class="darbari-event-time">સાંજે ૦૫:૧૫ કલાકે</div>
+              </div>
+            </div>
+            <div class="darbari-event-item">
+              <div class="darbari-event-thumb">
+                <img src="./assets/wedding_couple.png" alt="હસ્ત મેળાપ & ફેરા">
+              </div>
+              <div>
+                <div class="darbari-event-title">💍 હસ્ત મેળાપ & ફેરા</div>
+                <div class="darbari-event-time">સાંજે ૦૬:૩૦ કલાકે</div>
+              </div>
+            </div>
+            <div class="darbari-event-item">
+              <div class="darbari-event-thumb">
+                <img src="./assets/bhojan.png" alt="પ્રીતિભોજન">
+              </div>
+              <div>
+                <div class="darbari-event-title">🍽️ પ્રીતિભોજન</div>
+                <div class="darbari-event-time">સાંજે ૦૭:૩૦ કલાકે</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="width:100%; border-top:1px solid rgba(212,175,55,0.35); padding-top:8px;">
+        <p id="d-fun-footer" style="font-size:11px; font-style:italic; opacity:0.9;">
+          “કાકા ના લગનમાં જમવા વહેલા આવજો હોં!” - પરમ & જાનવી
+        </p>
+        <div style="font-size:10px; opacity:0.6; margin-top:4px;">AJ_Digitallab • 9687336426</div>
+      </div>
+    </div>
+
+    <!-- Page 4: Venue & RSVP -->
+    <div class="card-page">
+      <!-- Ornate Floral Corner Ornaments -->
+      <div class="darbari-corner left">
+        <img src="./assets/dec-3.png" alt="">
+      </div>
+      <div class="darbari-corner right">
+        <img src="./assets/dec-3.png" alt="">
+      </div>
+
+      <div style="margin-top:15px;">
+        <div style="height:62px; margin-bottom:4px; display:flex; justify-content:center; align-items:center;">
+          <img src="./assets/nimntran.png" class="sticker" style="filter:drop-shadow(0 4px 10px rgba(255,215,0,0.35));"
+            alt="Nimantran">
+        </div>
+        <h2 class="foil-gold" style="font-size:24px; margin:2px 0;">શુભ સ્થળ & સ્નેહાધીન</h2>
+        <p style="font-size:10.5px; color:#ffd700;">આપનું હાર્દિક સ્વાગત છે</p>
+      </div>
+
+      <div
+        style="width:100%; background:rgba(30,2,6,0.8); border:1.5px solid #d4af37; border-radius:16px; padding:12px 14px; box-shadow:0 6px 20px rgba(0,0,0,0.45);">
+        <span style="font-size:11px; font-weight:700; color:#ffd700;">📍 શુભ લગ્ન સ્થળ</span>
+        <h3 id="d-venue-name" style="font-size:18px; margin:4px 0; color:#fff; font-weight:700;">શ્રી નીલકંઠ ફાર્મ &
+          પાર્ટી પ્લોટ</h3>
+        <p id="d-venue-addr1" style="font-size:11.5px; opacity:0.92;">જૂનાગઢ બાયપાસ રોડ, કાંકરડા ચોકડી પાસે</p>
+        <p id="d-venue-addr2" style="font-size:11px; opacity:0.8;">જૂનાગઢ - ૩૬૨૦૦૧, ગુજરાત</p>
+        <a id="d-venue-map" href="https://maps.google.com/?q=Nilkanth+Farm+Junagadh" target="_blank" class="action-btn"
+          style="background:linear-gradient(135deg, #d4af37 0%, #ffd700 50%, #aa820a 100%); color:#110103; font-weight:700;">
+          🗺️ ગૂગલ મેપ્સ લોકેશન
+        </a>
+      </div>
+
+      <div class="info-grid">
+        <div
+          style="background:rgba(30,2,6,0.7); border:1px solid rgba(212,175,55,0.3); border-radius:10px; padding:8px;">
+          <strong style="color:#ffd700;">લિ. નિમંત્રક</strong>
+          <span id="d-fam-nimantrak">
+            <p>રમેશભાઈ ગોવિંદભાઈ પટેલ</p>
+            <p>ગીતાબેન રમેશભાઈ પટેલ</p>
+          </span>
+        </div>
+        <div
+          style="background:rgba(30,2,6,0.7); border:1px solid rgba(212,175,55,0.3); border-radius:10px; padding:8px;">
+          <strong style="color:#ffd700;">લિ. સ્નેહાધીન</strong>
+          <span id="d-fam-snehadhin">
+            <p>કાંતિભાઈ ગોવિંદભાઈ પટેલ</p>
+            <p>મુકેશભાઈ ગોવિંદભાઈ પટેલ</p>
+          </span>
+        </div>
+        <div
+          style="background:rgba(30,2,6,0.7); border:1px solid rgba(212,175,55,0.3); border-radius:10px; padding:8px;">
+          <strong style="color:#ffd700;">લિ. દર્શનાભિલાષી</strong>
+          <span id="d-fam-darshana">
+            <p>પરમ, જાનવી, પ્રિયંક, વિધ્યા</p>
+          </span>
+        </div>
+        <div
+          style="background:rgba(30,2,6,0.7); border:1px solid rgba(212,175,55,0.3); border-radius:10px; padding:8px;">
+          <strong style="color:#ffd700;">મોસાળ & બાણેજ</strong>
+          <span id="d-fam-mosal">
+            <p>શાંતિલાલ પટેલ (સુરત)</p>
+            <p>દિનેશભાઈ સોજીત્રા (અમદાવાદ)</p>
+          </span>
+        </div>
+      </div>
+
+      <div style="width:100%; border-top:1px solid rgba(212,175,55,0.35); padding-top:8px;">
+        <p id="d-contacts" style="font-size:12px; font-weight:700; color:#ffd700;">
+          સંપર્ક: +91 96873 36426 • +91 98250 12345
+        </p>
+        <div style="font-size:10px; opacity:0.6; margin-top:4px;">AJ_Digitallab • 9687336426</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= LAYOUT 2: HERITAGE PEACOCK ================= -->
+  <div id="layout-heritage" class="layout-container pages-container">
+    <!-- Page 1: Peacock Crest Cover -->
+    <div class="card-page">
+      <!-- Ornate Floral Corner Ornaments -->
+      <div class="heritage-corner left">
+        <img src="./assets/dec-3.png" alt="">
+      </div>
+      <div class="heritage-corner right">
+        <img src="./assets/dec-3.png" alt="">
+      </div>
+
+      <div style="margin-top:15px;">
+        <span
+          style="font-size:12px; font-weight:700; color:#fde047; border:1px solid rgba(250,204,21,0.4); padding:3px 14px; border-radius:20px; background:rgba(6,78,59,0.5);">
+          🦚 ॥ શ્રી ગણેશાય નમઃ ॥ 🦚
+        </span>
+        <div style="height:115px; margin:8px 0; display:flex; justify-content:center;">
+          <img src="./assets/ganesh_color.png" class="sticker" alt="Crowned Ganesha">
+        </div>
+        <p style="font-size:12px; line-height:1.7; opacity:0.9;">
+          વક્રતુંડ મહાકાય, સૂર્યકોટિ સમપ્રભ ।<br>નિર્વિઘ્નં કુરુ મે દેવ, સર્વકાર્યેષુ સર્વદા ॥
+        </p>
+      </div>
+
+      <!-- Twin Peacocks Banner -->
+      <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin:10px 0;">
+        <img src="./assets/peacock_royal.png" style="height:70px; object-fit:contain;" alt="Peacock">
+        <div style="display: grid;">
+          <span style="font-size:11px; font-weight:700; color:#fde047; letter-spacing:1px;">॥ માંગલિક કંકોતરી
+            ॥</span>
+          <h2 class="foil-emerald" style="font-size:32px;">શુભ વિવાહ</h2>
+        </div>
+        <img src="./assets/peacock_royal.png" style="height:70px; object-fit:contain; transform:scaleX(-1);"
+          alt="Peacock">
+      </div>
+
+      <div
+        style="width:100%; background:rgba(4,43,31,0.7); border:2px solid #eab308; border-radius:18px; padding:14px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div style="flex:1;">
+            <span style="font-size:11px; color:#fde047;">ચિ.</span>
+            <h3 id="h-groom-name" style="font-size:30px; font-weight:800; color:#fff;">દર્શન</h3>
+            <span id="h-groom-city"
+              style="display:inline-block; font-size:10px; background:rgba(6,78,59,0.8); padding:2px 8px; border-radius:10px; color:#a7f3d0;">જૂનાગઢ</span>
+          </div>
+          <div style="padding:0 10px;">
+            <div
+              style="width:36px; height:36px; border-radius:50%; border:2px solid #fde047; display:flex; align-items:center; justify-content:center; color:#fde047; font-size:16px;">
+              <div style="height:50px; display:flex; justify-content:center;">
+                <img src="./assets/card_ornament.png" class="sticker" alt="Ornament">
+              </div>
+            </div>
+            <span style="font-size:11px; font-weight:700; color:#fde047;">સંગ</span>
+          </div>
+          <div style="flex:1;">
+            <span style="font-size:11px; color:#fde047;">ચિ.</span>
+            <h3 id="h-bride-name" style="font-size:30px; font-weight:800; color:#fff;">ઈશિતા</h3>
+            <span id="h-bride-city"
+              style="display:inline-block; font-size:10px; background:rgba(6,78,59,0.8); padding:2px 8px; border-radius:10px; color:#a7f3d0;">રાજકોટ</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="width:100%; border-top:1px solid rgba(250,204,21,0.3); padding-top:8px;">
+        <p id="h-date-line" style="font-size:13px; font-weight:700; color:#fde047;">
+          વિક્રમ સંવત ૨૦૮૧, મહા સુદ પૂનમ | ગુરુવાર, ૧૩ ફેબ્રુઆરી ૨૦૨૫
+        </p>
+        <p id="h-family-line" style="font-size:11px; opacity:0.8; margin-top:2px;">
+          શ્રી રમેશભાઈ ગોવિંદભાઈ પટેલ તથા સમસ્ત પટેલ પરિવાર
+        </p>
+        <div style="font-size:10px; opacity:0.6; margin-top:4px;">AJ_Digitallab • 9687336426</div>
+      </div>
+    </div>
+
+    <!-- Page 2: Standing Traditional Couple -->
+    <div class="card-page">
+      <!-- Ornate Floral Corner Ornaments -->
+      <div class="heritage-corner left">
+        <img src="./assets/dec-3.png" alt="">
+      </div>
+      <div class="heritage-corner right">
+        <img src="./assets/dec-3.png" alt="">
+      </div>
+
+      <div style="margin-top:15px; display: grid;">
+        <span
+          style="font-size:11px; font-weight:700; color:#fde047; border:1px solid rgba(250,204,21,0.3); padding:2px 14px; border-radius:20px;">
+          ॥ પવિત્ર સપ્તપદી & વિવાહ મહોત્સવ ॥
+        </span>
+        <h2 class="foil-emerald" style="font-size:26px; margin:4px 0;">સ્નેહસભર નિમંત્રણ પત્રિકા</h2>
+      </div>
+
+      <div style="height:160px; display:flex; justify-content:center; margin:8px 0;">
+        <img src="./assets/couple_traditional.png" class="sticker" alt="Traditional Couple">
+      </div>
+
+      <p style="font-size:12.5px; line-height:1.8; text-align:justify; padding:0 8px; opacity:0.95;">
+        સ્નેહીશ્રી, પરમ કૃપાળુ પરમાત્મા શ્રી ગણેશજી અને કુળદેવીના અસીમ આશીર્વાદથી અમારા આંગણે મંગલ અવસર પધાર્યો
+        છે.
+        અમારા સુપુત્ર ચિ. દર્શન ના શુભ વિવાહ ચિ. ઈશિતા સંગ નિર્ધારિત થયેલ છે. આ પાવન પ્રસંગે આપ સપરિવાર ઉપસ્થિત
+        રહી
+        નવદંપતીને અંતઃકરણથી આશીર્વાદ આપી અમારા આનંદોત્સવમાં સહભાગી બનો એવી હાર્દિક પ્રાર્થના સહ ભાવભીનું નિમંત્રણ
+        પાઠવીએ
+        છીએ.
+      </p>
+
+      <div class="info-grid">
+        <div
+          style="background:rgba(4,43,31,0.6); border:1px solid rgba(250,204,21,0.3); border-radius:12px; padding:10px;">
+          <strong id="h-p2-varpaksh-title" style="color:#fde047; font-size:12px;">વરપક્ષ (ચિ. દર્શન)</strong>
+          <p id="h-p2-varpaksh-father" style="margin-top:2px;">શ્રી રમેશભાઈ ગોવિંદભાઈ પટેલ</p>
+          <p id="h-p2-varpaksh-city" style="opacity:0.8;">જૂનાગઢ (B.Tech Eng.)</p>
+        </div>
+        <div
+          style="background:rgba(4,43,31,0.6); border:1px solid rgba(250,204,21,0.3); border-radius:12px; padding:10px;">
+          <strong id="h-p2-kanyapaksh-title" style="color:#fde047; font-size:12px;">કન્યાપક્ષ (ચિ. ઈશિતા)</strong>
+          <p id="h-p2-kanyapaksh-father" style="margin-top:2px;">શ્રી હસમુખભાઈ મોહનભાઈ સાવલિયા</p>
+          <p id="h-p2-kanyapaksh-city" style="opacity:0.8;">રાજકોટ (M.Sc Design)</p>
+        </div>
+      </div>
+
+      <div style="width:100%; border-top:1px solid rgba(250,204,21,0.3); padding-top:8px;">
+        <p style="font-size:11px; opacity:0.8;">
+          માંગલ્યં ભગવાન વિષ્ણુઃ, માંગલ્યં ગરુડધ્વજઃ । માંગલ્યં પુંડરીકાક્ષો, મંગલાય તનો હરિઃ ॥
+        </p>
+        <div style="font-size:10px; opacity:0.6; margin-top:4px;">AJ_Digitallab • 9687336426</div>
+      </div>
+    </div>
+
+    <!-- Page 3: Events -->
+    <div class="card-page">
+      <!-- Ornate Floral Corner Ornaments -->
+      <div class="heritage-corner left">
+        <img src="./assets/dec-3.png" alt="">
+      </div>
+      <div class="heritage-corner right">
+        <img src="./assets/dec-3.png" alt="">
+      </div>
+
+      <div style="margin-top:10px;">
+        <div style="height:72px; display:flex; justify-content:center;">
+          <img src="./assets/shubh_vivah.png" class="sticker" alt="Ornament">
+        </div>
+        <h2 class="foil-emerald" style="font-size:24px; margin-top:2px;">માંગલિક પ્રસંગ રૂપરેખા</h2>
+        <p style="font-size:11px; color:#fde047; font-weight:600;">શાહી મહોત્સવ ના શુભ ચોઘડિયે</p>
+      </div>
+
+      <div style="width:100%; font-size:12px; margin:6px 0;">
+        <!-- Day 1: Wednesday -->
+        <div class="heritage-events-box">
+          <div class="heritage-events-header">
+            <span id="h-day1-header" style="font-size:12px; display:flex; align-items:center; gap:6px;">
+              <span>🦚</span> બુધવાર, ૧૨ ફેબ્રુઆરી ૨૦૨૫
+            </span>
+            <span id="h-day1-tithi" style="font-size:10px; color:#a7f3d0; font-weight:500;">મહા સુદ ચૌદશ</span>
+          </div>
+
+          <div id="h-day1-events" class="heritage-events-grid">
+            <!-- Event 1: Mandap Muhurat -->
+            <div class="heritage-event-item">
+              <div class="heritage-event-thumb">
+                <img src="./assets/logo_kalash.png" alt="મંડપ મુહૂર્ત">
+              </div>
+              <div style="line-height:1.25;">
+                <div class="heritage-event-title">મંડપ મુહૂર્ત</div>
+                <div class="heritage-event-time">સવારે ૦૮:૧૫ કલાકે</div>
+              </div>
+            </div>
+
+            <!-- Event 2: Haldi Rasam -->
+            <div class="heritage-event-item">
+              <div class="heritage-event-thumb">
+                <img src="./assets/haldi02.png" alt="હલ્દી રસમ">
+              </div>
+              <div style="line-height:1.25;">
+                <div class="heritage-event-title">હલ્દી રસમ (પીઠી)</div>
+                <div class="heritage-event-time">બપોરે ૧૧:૩૦ કલાકે</div>
+              </div>
+            </div>
+
+            <!-- Event 3: Mehndi Mahotsav -->
+            <div class="heritage-event-item">
+              <div class="heritage-event-thumb">
+                <img src="./assets/sticker_d11.png" alt="મહેંદી મહોત્સવ">
+              </div>
+              <div style="line-height:1.25;">
+                <div class="heritage-event-title">મહેંદી મહોત્સવ</div>
+                <div class="heritage-event-time">બપોરે ૦૩:૩૦ કલાકે</div>
+              </div>
+            </div>
+
+            <!-- Event 4: Raas-Garba & Sangeet -->
+            <div class="heritage-event-item">
+              <div class="heritage-event-thumb">
+                <img src="./assets/dadiya.png" alt="રાસ-ગરબા & સંગીત">
+              </div>
+              <div style="line-height:1.25;">
+                <div class="heritage-event-title">રાસ-ગરબા & સંગીત</div>
+                <div class="heritage-event-time">રાત્રે ૦૮:૩૦ કલાકે</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 2: Thursday -->
+        <div class="heritage-events-box" style="margin-bottom:0;">
+          <div class="heritage-events-header">
+            <span id="h-day2-header" style="font-size:12px; display:flex; align-items:center; gap:6px;">
+              <span>🦚</span> ગુરુવાર, ૧૩ ફેબ્રુઆરી ૨૦૨૫
+            </span>
+            <span id="h-day2-tithi" style="font-size:10px; color:#a7f3d0; font-weight:500;">મહા સુદ પૂનમ</span>
+          </div>
+
+          <div id="h-day2-events" class="heritage-events-grid">
+            <!-- Event 5: Jaan Prasthan -->
+            <div class="heritage-event-item">
+              <div class="heritage-event-thumb">
+                <img src="./assets/shehnai_dhol.png" alt="જાન પ્રસ્થાન">
+              </div>
+              <div style="line-height:1.25;">
+                <div class="heritage-event-title">જાન પ્રસ્થાન</div>
+                <div class="heritage-event-time">બપોરે ૦૨:૩૦ કલાકે</div>
+              </div>
+            </div>
+
+            <!-- Event 6: Samaiyu Swagat -->
+            <div class="heritage-event-item">
+              <div class="heritage-event-thumb">
+                <img src="./assets/marriage_mandap.png" alt="સામૈયું સ્વાગત">
+              </div>
+              <div style="line-height:1.25;">
+                <div class="heritage-event-title">સામૈયું સ્વાગત</div>
+                <div class="heritage-event-time">સાંજે ૦૫:૧૫ કલાકે</div>
+              </div>
+            </div>
+
+            <!-- Event 7: Hast Melap & Phera -->
+            <div class="heritage-event-item">
+              <div class="heritage-event-thumb">
+                <img src="./assets/wedding_couple.png" alt="હસ્ત મેળાપ & ફેરા">
+              </div>
+              <div style="line-height:1.25;">
+                <div class="heritage-event-title">હસ્ત મેળાપ & ફેરા</div>
+                <div class="heritage-event-time">સાંજે ૦૬:૩૦ કલાકે</div>
+              </div>
+            </div>
+
+            <!-- Event 8: Pritibhojan -->
+            <div class="heritage-event-item">
+              <div class="heritage-event-thumb">
+                <img src="./assets/bhojan.png" alt="પ્રીતિભોજન">
+              </div>
+              <div style="line-height:1.25;">
+                <div class="heritage-event-title">પ્રીતિભોજન</div>
+                <div class="heritage-event-time">સાંજે ૦૭:૩૦ કલાકે</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="width:100%; border-top:1px solid rgba(250,204,21,0.3); padding-top:8px;">
+        <p id="h-fun-footer" style="font-size:11px; font-style:italic; opacity:0.9;">
+          “કાકા ના લગનમાં જમવા વહેલા આવજો હોં!” - પરમ & જાનવી
+        </p>
+        <div style="font-size:10px; opacity:0.6; margin-top:4px;">AJ_Digitallab • 9687336426</div>
+      </div>
+    </div>
+
+    <!-- Page 4: Venue & RSVP -->
+    <div class="card-page">
+      <!-- Ornate Floral Corner Ornaments -->
+      <div class="heritage-corner left">
+        <img src="./assets/dec-3.png" alt="">
+      </div>
+      <div class="heritage-corner right">
+        <img src="./assets/dec-3.png" alt="">
+      </div>
+
+      <div style="margin-top:15px;">
+        <div style="height:72px; margin-bottom:5px; display:flex; justify-content:center;">
+          <img src="./assets/nimntran.png" class="sticker" alt="Kundan">
+        </div>
+        <h2 class="foil-emerald" style="font-size:26px;">શુભ સ્થળ & સ્નેહાધીન</h2>
+        <p style="font-size:11px; color:#fde047;">નવયુગલને આશીર્વાદ આપવા પધારો</p>
+      </div>
+
+      <div
+        style="width:100%; background:rgba(4,43,31,0.7); border:1.5px solid #eab308; border-radius:16px; padding:14px;">
+        <span style="font-size:11px; font-weight:700; color:#fde047;">📍 વિવાહ મહોત્સવ સ્થળ</span>
+        <h3 id="h-venue-name" style="font-size:18px; margin:4px 0; color:#fff;">શ્રી નીલકંઠ ફાર્મ & પાર્ટી પ્લોટ</h3>
+        <p id="h-venue-addr1" style="font-size:12px; opacity:0.9;">જૂનાગઢ બાયપાસ રોડ, કાંકરડા ચોકડી પાસે</p>
+        <p id="h-venue-addr2" style="font-size:11px; opacity:0.8;">જૂનાગઢ - ૩૬૨૦૦૧, ગુજરાત</p>
+        <a id="h-venue-map" href="https://maps.google.com/?q=Nilkanth+Farm+Junagadh" target="_blank" class="action-btn"
+          style="background:#fde047;">
+          🗺️ ગૂગલ મેપ્સ લોકેશન
+        </a>
+      </div>
+
+      <div class="info-grid">
+        <div
+          style="background:rgba(4,43,31,0.6); border:1px solid rgba(250,204,21,0.3); border-radius:10px; padding:8px;">
+          <strong style="color:#fde047;">લિ. નિમંત્રક</strong>
+          <span id="h-fam-nimantrak">
+            <p>રમેશભાઈ ગોવિંદભાઈ પટેલ</p>
+            <p>ગીતાબેન રમેશભાઈ પટેલ</p>
+          </span>
+        </div>
+        <div
+          style="background:rgba(4,43,31,0.6); border:1px solid rgba(250,204,21,0.3); border-radius:10px; padding:8px;">
+          <strong style="color:#fde047;">લિ. સ્નેહાધીન</strong>
+          <span id="h-fam-snehadhin">
+            <p>કાંતિભાઈ ગોવિંદભાઈ પટેલ</p>
+            <p>મુકેશભાઈ ગોવિંદભાઈ પટેલ</p>
+          </span>
+        </div>
+        <div
+          style="background:rgba(4,43,31,0.6); border:1px solid rgba(250,204,21,0.3); border-radius:10px; padding:8px;">
+          <strong style="color:#fde047;">લિ. દર્શનાભિલાષી</strong>
+          <span id="h-fam-darshana">
+            <p>પરમ, જાનવી, પ્રિયંક, વિધ્યા</p>
+          </span>
+        </div>
+        <div
+          style="background:rgba(4,43,31,0.6); border:1px solid rgba(250,204,21,0.3); border-radius:10px; padding:8px;">
+          <strong style="color:#fde047;">મોસાળ & બાણેજ</strong>
+          <span id="h-fam-mosal">
+            <p>શાંતિલાલ પટેલ (સુરત)</p>
+            <p>દિનેશભાઈ સોજીત્રા (અમદાવાદ)</p>
+          </span>
+        </div>
+      </div>
+
+      <div style="width:100%; border-top:1px solid rgba(250,204,21,0.3); padding-top:8px;">
+        <p id="h-contacts" style="font-size:12px; font-weight:700; color:#fde047;">
+          સંપર્ક: +91 96873 36426 • +91 98250 12345
+        </p>
+        <div style="font-size:10px; opacity:0.6; margin-top:4px;">AJ_Digitallab • 9687336426</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= LAYOUT 3: MODERN BOHO FLORAL ================= -->
+  <div id="layout-floral" class="layout-container pages-container">
+    <!-- Page 1: Boho Pampas Wreath Cover -->
+    <div class="card-page">
+      <div style="position:absolute; top:-5px; left:-5px; width:95px; height:95px; opacity:0.85;">
+        <img src="./assets/flowers_corner.png" style="width:100%; height:100%;" alt="">
+      </div>
+      <div style="position:absolute; bottom:-5px; right:-5px; width:95px; height:95px; opacity:0.85;  ">
+        <img src="./assets/flowers_corner.png" style="width:100%; height:100%;" alt="">
+      </div>
+
+      <div style="margin-top:15px;">
+        <span
+          style="font-size:11px; font-weight:700; color:#be185d; border:1px solid rgba(190,24,93,0.3); padding:3px 14px; border-radius:20px; background:#fff;">
+          🌸 ॥ શ્રી ગણેશાય નમઃ ॥ 🌸
+        </span>
+        <div style="height:90px; margin:8px 0; display:flex; justify-content:center;">
+          <img src="./assets/ganesh_red.png" class="sticker" alt="Red Ganesha">
+        </div>
+        <p style="font-size:12px; line-height:1.7; opacity:0.85;">
+          વક્રતુંડ મહાકાય, સૂર્યકોટિ સમપ્રભ ।<br>નિર્વિઘ્નં કુરુ મે દેવ, સર્વકાર્યેષુ સર્વદા ॥
+        </p>
+      </div>
+
+      <!-- Central Boho Pampas Wreath -->
+      <div
+        style="position:relative; width:240px; height:240px; display:flex; align-items:center; justify-content:center; margin:10px 0;">
+        <div style="text-align:center; z-index:2; display: grid;">
+          <span style="font-size:11px; font-weight:700; color:#be185d; letter-spacing:1px;">શુભ વિવાહ</span>
+          <h2 id="f-groom-name" class="foil-rose" style="font-size:30px; margin:2px 0;">ચિ. દર્શન</h2>
+          <img src="./assets/sang1.png" style=" width:100%; height:100%; object-fit:contain;" alt="Boho Wreath">
+          <h2 id="f-bride-name" class="foil-rose" style="font-size:30px; margin:2px 0;">ચિ. ઈશિતા</h2>
+        </div>
+      </div>
+
+      <div style="width:100%; padding-top:8px;">
+        <div
+          style="display:inline-block; background:linear-gradient(135deg, #be185d, #e11d48); color:#fff; font-weight:700; font-size:12px; padding:6px 18px; border-radius:20px;"
+          id="f-date-pill">
+          🌸 વિક્રમ સંવત ૨૦૮૧ | ગુરુવાર, ૧૩ ફેબ્રુઆરી ૨૦૨૫
+        </div>
+        <p id="f-family-line" style="font-size:11.5px; opacity:0.85; margin-top:6px;">
+          શ્રી રમેશભાઈ ગોવિંદભાઈ પટેલ તથા સમસ્ત પટેલ પરિવાર
+        </p>
+        <div style="font-size:10px; opacity:0.6; margin-top:4px;">AJ_Digitallab • 9687336426</div>
+      </div>
+    </div>
+
+    <!-- Page 2: Cute Romantic Couple -->
+    <div class="card-page">
+      <div style="position:absolute; top:-5px; left:-5px; width:95px; height:95px; opacity:0.85;">
+        <img src="./assets/flowers_corner.png" style="width:100%; height:100%;" alt="">
+      </div>
+      <div style="position:absolute; bottom:-5px; right:-5px; width:95px; height:95px; opacity:0.85;  ">
+        <img src="./assets/flowers_corner.png" style="width:100%; height:100%;" alt="">
+      </div>
+      <div style="margin-top:20px; display: grid;">
+        <span
+          style="font-size:11px; font-weight:700; color:#be185d; border:1px solid rgba(190,24,93,0.3); padding:2px 14px; border-radius:20px; background:#fff;">
+          ॥ બે હૃદયનું મિલન, બે પરિવારનો સંગમ ॥
+        </span>
+        <h2 class="foil-rose" style="font-size:26px; margin:4px 0;">પ્રેમસભર વિવાહ આમંત્રણ</h2>
+      </div>
+
+      <div style="height:180px; display:flex; justify-content:center; margin:8px 0;">
+        <img src="./assets/couple_cute.png" class="sticker" alt="Cute Couple">
+      </div>
+
+      <p style="font-size:12.5px; line-height:1.8; text-align:justify; padding:0 8px; opacity:0.95;">
+        સ્નેહીશ્રી, પરમ કૃપાળુ પરમાત્મા શ્રી ગણેશજી અને કુળદેવીના અસીમ આશીર્વાદથી અમારા આંગણે મંગલ અવસર પધાર્યો
+        છે.
+        અમારા સુપુત્ર ચિ. દર્શન ના શુભ વિવાહ ચિ. ઈશિતા સંગ નિર્ધારિત થયેલ છે. આ પાવન પ્રસંગે આપ સપરિવાર ઉપસ્થિત
+        રહી
+        નવદંપતીને અંતઃકરણથી આશીર્વાદ આપી અમારા આનંદોત્સવમાં સહભાગી બનો એવી હાર્દિક પ્રાર્થના સહ ભાવભીનું
+        નિમંત્રણ પાઠવીએ
+        છીએ.
+      </p>
+
+      <div class="info-grid">
+        <div
+          style="background:#fff; border:1px solid rgba(190,24,93,0.2); border-radius:12px; padding:10px; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+          <strong id="f-p2-varpaksh-title" style="color:#be185d; font-size:12px;">વરપક્ષ (ચિ. દર્શન)</strong>
+          <p id="f-p2-varpaksh-father" style="margin-top:2px;">શ્રી રમેશભાઈ ગોવિંદભાઈ પટેલ</p>
+          <p id="f-p2-varpaksh-city" style="opacity:0.8;">જૂનાગઢ (B.Tech Software)</p>
+        </div>
+        <div
+          style="background:#fff; border:1px solid rgba(190,24,93,0.2); border-radius:12px; padding:10px; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+          <strong id="f-p2-kanyapaksh-title" style="color:#be185d; font-size:12px;">કન્યાપક્ષ (ચિ. ઈશિતા)</strong>
+          <p id="f-p2-kanyapaksh-father" style="margin-top:2px;">શ્રી હસમુખભાઈ મોહનભાઈ સાવલિયા</p>
+          <p id="f-p2-kanyapaksh-city" style="opacity:0.8;">રાજકોટ (M.Sc Design)</p>
+        </div>
+      </div>
+
+      <div style="width:100%; border-top:1px solid rgba(190,24,93,0.2); padding-top:8px;">
+        <p style="font-size:11px; opacity:0.85;">
+          માંગલ્યં ભગવાન વિષ્ણુઃ, માંગલ્યં ગરુડધ્વજઃ । માંગલ્યં પુંડરીકાક્ષો, મંગલાય તનો હરિઃ ॥
+        </p>
+        <div style="font-size:10px; opacity:0.6; margin-top:4px;">AJ_Digitallab • 9687336426</div>
+      </div>
+    </div>
+
+    <!-- Page 3: Events -->
+    <div class="card-page">
+      <div style="position:absolute; top:-5px; left:-5px; width:95px; height:95px; opacity:0.85;">
+        <img src="./assets/flowers_corner.png" style="width:100%; height:100%;" alt="">
+      </div>
+      <div style="position:absolute; bottom:-5px; right:-5px; width:95px; height:95px; opacity:0.85;  ">
+        <img src="./assets/flowers_corner.png" style="width:100%; height:100%;" alt="">
+      </div>
+      <div style="margin-top:15px;">
+        <div style="height:60px; display:flex; justify-content:center;">
+          <img src="./assets/flower.png" class="sticker" alt="Flower">
+        </div>
+        <h2 class="foil-rose" style="font-size:26px; margin-top:4px;">માંગલિક લગ્નોત્સવ રૂપરેખા</h2>
+        <p style="font-size:11px; color:#be185d;">પ્રીત અને સ્નેહની મંગલ રસમ</p>
+      </div>
+
+      <div style="width:100%; font-size:12px;">
+        <div
+          style="background:#fff; border:1px solid rgba(190,24,93,0.2); border-radius:14px; padding:10px; margin-bottom:10px; text-align:left; box-shadow:0 2px 8px rgba(0,0,0,0.05);"
+          id="f-day1-box">
+          <div id="f-day1-header"
+            style="font-weight:700; color:#be185d; border-bottom:1px solid rgba(190,24,93,0.1); padding-bottom:4px;">
+            🌺 બુધવાર, ૧૨ ફેબ્રુઆરી ૨૦૨૫
+          </div>
+          <span id="f-day1-events">
+            <p style="margin-top:4px;">🪔 <strong>મંડપ મુહૂર્ત</strong> - સવારે ૦૮:૧૫ કલાકે</p>
+            <p>🌼 <strong>હલ્દી રસમ (પીઠી)</strong> - બપોરે ૧૧:૩૦ કલાકે</p>
+            <p>🌿 <strong>મહેંદી મહોત્સવ</strong> - બપોરે ૦૩:૩૦ કલાકે</p>
+            <p>🪕 <strong>રાસ-ગરબા & સંગીત</strong> - રાત્રે ૦૮:૩૦ કલાકે</p>
+          </span>
+        </div>
+
+        <div
+          style="background:#fff; border:1px solid rgba(190,24,93,0.2); border-radius:14px; padding:10px; text-align:left; box-shadow:0 2px 8px rgba(0,0,0,0.05);"
+          id="f-day2-box">
+          <div id="f-day2-header"
+            style="font-weight:700; color:#be185d; border-bottom:1px solid rgba(190,24,93,0.1); padding-bottom:4px;">
+            🌺 ગુરુવાર, ૧૩ ફેબ્રુઆરી ૨૦૨૫
+          </div>
+          <span id="f-day2-events">
+            <p style="margin-top:4px;">🥁 <strong>જાન પ્રસ્થાન</strong> - બપોરે ૦૨:૩૦ કલાકે</p>
+            <p>🌸 <strong>સામૈયું સ્વાગત</strong> - સાંજે ૦૫:૧૫ કલાકે</p>
+            <p>💍 <strong>હસ્ત મેળાપ & ફેરા</strong> - સાંજે ૦૬:૩૦ કલાકે</p>
+            <p>🍽️ <strong>પ્રીતિભોજન</strong> - સાંજે ૦૭:૩૦ કલાકે</p>
+          </span>
+        </div>
+      </div>
+
+      <div style="width:100%; border-top:1px solid rgba(190,24,93,0.2); padding-top:8px;">
+        <p id="f-fun-footer" style="font-size:11px; font-style:italic; opacity:0.9;">
+          “કાકા ના લગનમાં જમવા વહેલા આવજો હોં!” - પરમ & જાનવી
+        </p>
+        <div style="font-size:10px; opacity:0.6; margin-top:4px;">AJ_Digitallab • 9687336426</div>
+      </div>
+    </div>
+
+    <!-- Page 4: Venue & RSVP -->
+    <div class="card-page">
+      <div style="position:absolute; top:-5px; left:-5px; width:95px; height:95px; opacity:0.85;">
+        <img src="./assets/flowers_corner.png" style="width:100%; height:100%;" alt="">
+      </div>
+      <div style="position:absolute; bottom:-5px; right:-5px; width:95px; height:95px; opacity:0.85;  ">
+        <img src="./assets/flowers_corner.png" style="width:100%; height:100%;" alt="">
+      </div>
+      <div style="margin-top:20px;">
+        <div style="height:55px; margin-bottom:5px; display:flex; justify-content:center;">
+          <img src="./assets/vivah0.png" class="sticker" alt="Vivah Seal">
+        </div>
+        <h2 class="foil-rose" style="font-size:26px;">શુભ સ્થળ & સ્નેહાધીન</h2>
+        <p style="font-size:11px; color:#be185d;">આપનું સ્નેહભર્યું સ્વાગત છે</p>
+      </div>
+
+      <div
+        style="width:100%; background:#fff; border:1.5px solid #be185d; border-radius:16px; padding:14px; box-shadow:0 4px 12px rgba(190,24,93,0.1);">
+        <span style="font-size:11px; font-weight:700; color:#be185d;">📍 મંગલ વિવાહ સ્થળ</span>
+        <h3 id="f-venue-name" style="font-size:18px; margin:4px 0; color:#4c0519;">શ્રી નીલકંઠ ફાર્મ & પાર્ટી પ્લોટ</h3>
+        <p id="f-venue-addr1" style="font-size:12px; opacity:0.9;">જૂનાગઢ બાયપાસ રોડ, કાંકરડા ચોકડી પાસે</p>
+        <p id="f-venue-addr2" style="font-size:11px; opacity:0.8;">જૂનાગઢ - ૩૬૨૦૦૧, ગુજરાત</p>
+        <a id="f-venue-map" href="https://maps.google.com/?q=Nilkanth+Farm+Junagadh" target="_blank" class="action-btn"
+          style="background:#be185d; color:#fff;">
+          🗺️ ગૂગલ મેપ્સ લોકેશન
+        </a>
+      </div>
+
+      <div class="info-grid">
+        <div style="background:#fff; border:1px solid rgba(190,24,93,0.2); border-radius:10px; padding:8px;">
+          <strong style="color:#be185d;">લિ. નિમંત્રક</strong>
+          <span id="f-fam-nimantrak">
+            <p>રમેશભાઈ ગોવિંદભાઈ પટેલ</p>
+            <p>ગીતાબેન રમેશભાઈ પટેલ</p>
+          </span>
+        </div>
+        <div style="background:#fff; border:1px solid rgba(190,24,93,0.2); border-radius:10px; padding:8px;">
+          <strong style="color:#be185d;">લિ. સ્નેહાધીન</strong>
+          <span id="f-fam-snehadhin">
+            <p>કાંતિભાઈ ગોવિંદભાઈ પટેલ</p>
+            <p>મુકેશભાઈ ગોવિંદભાઈ પટેલ</p>
+          </span>
+        </div>
+        <div style="background:#fff; border:1px solid rgba(190,24,93,0.2); border-radius:10px; padding:8px;">
+          <strong style="color:#be185d;">લિ. દર્શનાભિલાષી</strong>
+          <span id="f-fam-darshana">
+            <p>પરમ, જાનવી, પ્રિયંક, વિધ્યા</p>
+          </span>
+        </div>
+        <div style="background:#fff; border:1px solid rgba(190,24,93,0.2); border-radius:10px; padding:8px;">
+          <strong style="color:#be185d;">મોસાળ & બાણેજ</strong>
+          <span id="f-fam-mosal">
+            <p>શાંતિલાલ પટેલ (સુરત)</p>
+            <p>દિનેશભાઈ સોજીત્રા (અમદાવાદ)</p>
+          </span>
+        </div>
+      </div>
+
+      <div style="width:100%; border-top:1px solid rgba(190,24,93,0.2); padding-top:8px;">
+        <p id="f-contacts" style="font-size:12px; font-weight:700; color:#be185d;">
+          સંપર્ક: +91 96873 36426 • +91 98250 12345
+        </p>
+        <div style="font-size:10px; opacity:0.6; margin-top:4px;">AJ_Digitallab • 9687336426</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ DATA FILE: edit weddingData.js to change all content ═══ -->
+  <script src="./weddingData.js"></script>
+
+  <!-- ═══ DATA RENDERER: injects weddingData into all 3 layouts ═══ -->
+  <script>
+    (function renderWeddingData() {
+      const d = weddingData;
+
+      /* ── helpers ──────────────────────────────────────────────── */
+      function set(id, html) {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = html;
+      }
+      function setText(id, txt) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = txt;
+      }
+      function setAttr(id, attr, val) {
+        const el = document.getElementById(id);
+        if (el) el.setAttribute(attr, val);
+      }
+
+      /* ── SHARED computed strings ──────────────────────────────── */
+      const fullDate = `${d.date.vikramSamvat}, ${d.date.tithi} | ${d.date.day}, ${d.date.date}`;
+      const contactLine = d.contacts.join(' • ');
+      const groomFull = `${d.groom.prefix} ${d.groom.name}`;
+      const brideFull = `${d.bride.prefix} ${d.bride.name}`;
+
+      /* ── EVENT ITEM BUILDERS ──────────────────────────────────── */
+      function darbariEventItem(ev) {
+        return `<div class="darbari-event-item">
+        <div class="darbari-event-thumb"><img src="${ev.image}" alt="${ev.title}"></div>
+        <div>
+          <div class="darbari-event-title">${ev.emoji} ${ev.title}</div>
+          <div class="darbari-event-time">${ev.time}</div>
+        </div>
+      </div>`;
+      }
+      function heritageEventItem(ev) {
+        return `<div class="heritage-event-item">
+        <div class="heritage-event-thumb"><img src="${ev.image}" alt="${ev.title}"></div>
+        <div style="line-height:1.25;">
+          <div class="heritage-event-title">${ev.title}</div>
+          <div class="heritage-event-time">${ev.time}</div>
+        </div>
+      </div>`;
+      }
+      function floralEventRow(ev) {
+        return `<p${ev === d.day1Events[0] || ev === d.day2Events[0] ? ' style="margin-top:4px;"' : ''}>
+        ${ev.emoji} <strong>${ev.title}</strong> - ${ev.time}</p>`;
+      }
+
+      /* ── FAMILY GRID ROWS ────────────────────────────────────── */
+      function familyRows(arr) {
+        if (!arr) return '';
+        if (Array.isArray(arr)) return arr.map(n => `<p>${n}</p>`).join('');
+        return `<p>${arr}</p>`;
+      }
+      const famNimantrak = familyRows(d.family?.nimantrak || d.family?.inviters || []);
+      const famSnehadhin = familyRows(d.family?.snehadhin || d.family?.sneh || []);
+      const famDarshana = familyRows(d.family?.darshanabhilashi || d.family?.darshan || []);
+      const famMosal = familyRows(d.family?.mosal || d.family?.mosaL || []);
+
+      /* ════════════════════════════════════════════════════════════
+         LAYOUT 1 — DARBARI JHAROKHA
+      ═════════════════════════════════════════════════════════════ */
+
+      /* Page 1 */
+      set('d-groom-name', d.groom.name);
+      set('d-groom-city', d.groom.city);
+      set('d-bride-name', d.bride.name);
+      set('d-bride-city', d.bride.city);
+      set('d-date-line', fullDate);
+      set('d-family-line', d.familyLine);
+
+      /* Page 2 */
+      set('d-p2-groom-bold', groomFull);
+      set('d-p2-bride-bold', brideFull);
+      set('d-p2-varpaksh-title', `વરપક્ષ (${groomFull})`);
+      set('d-p2-varpaksh-father', d.groom.fatherName);
+      set('d-p2-varpaksh-city', `${d.groom.city} (${d.groom.education})`);
+      set('d-p2-kanyapaksh-title', `કન્યાપક્ષ (${brideFull})`);
+      set('d-p2-kanyapaksh-father', d.bride.fatherName);
+      set('d-p2-kanyapaksh-city', `${d.bride.city} (${d.bride.education})`);
+
+      /* Page 3 */
+      set('d-day1-header', `🦚 ${d.date.day1.dayName}, ${d.date.day1.date}`);
+      set('d-day1-label', d.date.day1.label);
+      set('d-day1-events', d.day1Events.map(darbariEventItem).join(''));
+      set('d-day2-header', `🦚 ${d.date.day2.dayName}, ${d.date.day2.date}`);
+      set('d-day2-label', d.date.day2.label);
+      set('d-day2-events', d.day2Events.map(darbariEventItem).join(''));
+      set('d-fun-footer', d.funFooter);
+
+      /* Page 4 */
+      set('d-venue-name', d.venue.name);
+      set('d-venue-addr1', d.venue.address1);
+      set('d-venue-addr2', d.venue.address2);
+      setAttr('d-venue-map', 'href', d.venue.mapsUrl);
+      set('d-fam-nimantrak', famNimantrak);
+      set('d-fam-snehadhin', famSnehadhin);
+      set('d-fam-darshana', famDarshana);
+      set('d-fam-mosal', famMosal);
+      set('d-contacts', `સંપર્ક: ${contactLine}`);
+
+      /* ════════════════════════════════════════════════════════════
+         LAYOUT 2 — HERITAGE PEACOCK
+      ═════════════════════════════════════════════════════════════ */
+
+      /* Page 1 */
+      set('h-groom-name', d.groom.name);
+      set('h-groom-city', d.groom.city);
+      set('h-bride-name', d.bride.name);
+      set('h-bride-city', d.bride.city);
+      set('h-date-line', fullDate);
+      set('h-family-line', d.familyLine);
+
+      /* Page 2 */
+      set('h-p2-varpaksh-title', `વરપક્ષ (${groomFull})`);
+      set('h-p2-varpaksh-father', d.groom.fatherName);
+      set('h-p2-varpaksh-city', `${d.groom.city} (${d.groom.education})`);
+      set('h-p2-kanyapaksh-title', `કન્યાપક્ષ (${brideFull})`);
+      set('h-p2-kanyapaksh-father', d.bride.fatherName);
+      set('h-p2-kanyapaksh-city', `${d.bride.city} (${d.bride.education})`);
+
+      /* Page 3 */
+      set('h-day1-header-text', `${d.date.day1.dayName}, ${d.date.day1.date}`);
+      set('h-day1-tithi', d.date.day1.tithi);
+      set('h-day1-events', d.day1Events.map(heritageEventItem).join(''));
+      set('h-day2-header-text', `${d.date.day2.dayName}, ${d.date.day2.date}`);
+      set('h-day2-tithi', d.date.day2.tithi);
+      set('h-day2-events', d.day2Events.map(heritageEventItem).join(''));
+      set('h-fun-footer', d.funFooter);
+
+      /* Page 4 */
+      set('h-venue-name', d.venue.name);
+      set('h-venue-addr1', d.venue.address1);
+      set('h-venue-addr2', d.venue.address2);
+      setAttr('h-venue-map', 'href', d.venue.mapsUrl);
+      set('h-fam-nimantrak', famNimantrak);
+      set('h-fam-snehadhin', famSnehadhin);
+      set('h-fam-darshana', famDarshana);
+      set('h-fam-mosal', famMosal);
+      set('h-contacts', `સંપર્ક: ${contactLine}`);
+
+      /* ════════════════════════════════════════════════════════════
+         LAYOUT 3 — MODERN BOHO FLORAL
+      ═════════════════════════════════════════════════════════════ */
+
+      /* Page 1 */
+      set('f-groom-name', groomFull);
+      set('f-bride-name', brideFull);
+      set('f-date-pill', `🌸 ${d.date.vikramSamvat} | ${d.date.day}, ${d.date.date}`);
+      set('f-family-line', d.familyLine);
+
+      /* Page 2 */
+      set('f-p2-varpaksh-title', `વરપક્ષ (${groomFull})`);
+      set('f-p2-varpaksh-father', d.groom.fatherName);
+      set('f-p2-varpaksh-city', `${d.groom.city} (${d.groom.education})`);
+      set('f-p2-kanyapaksh-title', `કન્યાપક્ષ (${brideFull})`);
+      set('f-p2-kanyapaksh-father', d.bride.fatherName);
+      set('f-p2-kanyapaksh-city', `${d.bride.city} (${d.bride.education})`);
+
+      /* Page 3 */
+      set('f-day1-header', `🌺 ${d.date.day1.dayName}, ${d.date.day1.date}`);
+      set('f-day1-events', d.day1Events.map(floralEventRow).join(''));
+      set('f-day2-header', `🌺 ${d.date.day2.dayName}, ${d.date.day2.date}`);
+      set('f-day2-events', d.day2Events.map(floralEventRow).join(''));
+      set('f-fun-footer', d.funFooter);
+
+      /* Page 4 */
+      set('f-venue-name', d.venue.name);
+      set('f-venue-addr1', d.venue.address1);
+      set('f-venue-addr2', d.venue.address2);
+      setAttr('f-venue-map', 'href', d.venue.mapsUrl);
+      set('f-fam-nimantrak', famNimantrak);
+      set('f-fam-snehadhin', famSnehadhin);
+      set('f-fam-darshana', famDarshana);
+      set('f-fam-mosal', famMosal);
+      set('f-contacts', `સંપર્ક: ${contactLine}`);
+
+    })();
+  </script>
+
+  <!-- Audio Synthesis Script -->
+  <script>
+    function switchLayout(layoutName, btn) {
+      document.body.className = 'layout-' + layoutName;
+      document.querySelectorAll('.btn-layout').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      document.querySelectorAll('.layout-container').forEach(c => c.classList.remove('active'));
+      const activeContainer = document.getElementById('layout-' + layoutName);
+      if (activeContainer) activeContainer.classList.add('active');
+    }
+
+    // Shehnai Audio Synthesis
+    let audioCtx = null;
+    let isPlaying = false;
+    let melodyTimer = null;
+    let droneOscs = [];
+
+    function toggleAudio() {
+      if (isPlaying) {
+        stopAudio();
+      } else {
+        startAudio();
+      }
+    }
+
+    function startAudio() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioCtx();
+
+        // Tanpura base drone
+        const base = 146.83; // D3
+        [base, base * 1.5, base * 2].forEach(f => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.frequency.value = f;
+          gain.gain.value = 0.035;
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          droneOscs.push(osc);
+        });
+
+        // Shehnai melody notes
+        const notes = [293.66, 329.63, 369.99, 440.0, 493.88, 587.33, 440.0, 369.99];
+        let step = 0;
+        melodyTimer = setInterval(() => {
+          if (!audioCtx) return;
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.value = notes[step % notes.length];
+          gain.gain.setValueAtTime(0.02, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.2);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 1.2);
+          step++;
+        }, 1400);
+
+        isPlaying = true;
+        document.getElementById('audioIcon').innerText = '🔊';
+        document.getElementById('audioText').innerText = 'સંગીત ચાલુ';
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    function stopAudio() {
+      if (melodyTimer) clearInterval(melodyTimer);
+      droneOscs.forEach(o => { try { o.stop(); } catch (e) { } });
+      droneOscs = [];
+      if (audioCtx) { try { audioCtx.close(); } catch (e) { } audioCtx = null; }
+      isPlaying = false;
+      document.getElementById('audioIcon').innerText = '🎵';
+      document.getElementById('audioText').innerText = 'શરણાઈ';
+    }
+  </script>
+</body>
+
+</html>

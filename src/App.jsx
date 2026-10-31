@@ -75,7 +75,7 @@ export default function App() {
           <HowItWorks lang={lang} t={t} />
 
           {/* Pricing & Packages */}
-          <Pricing lang={lang} t={t} />
+          {/* <Pricing lang={lang} t={t} /> */}
 
           {/* Testimonials from Real Gujarati Couples */}
           <Testimonials t={t} />
