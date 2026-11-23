@@ -1,3 +1,12 @@
+import royalGoldCover from './assets/Royal Gold Wedding Invitation.png'
+import elegantWeddingCover from './assets/Elegant Indian Wedding Invitation.png'
+import swarnaRoyalCover from './assets/swarna-elegance-royal.png'
+import jharokhaCover from './assets/jharokha-royal-palace.png'
+import emeraldCover from './assets/emerald-royal-envelope.png'
+import marigoldCover from './assets/marigold-petals-fall.png'
+import lotusCover from './assets/lotus-new-wed.png'
+import moonHeartCover from './assets/moon-theme.png'
+
 // ---------- mock data (replace with API later) ----------
 export const L = {
   om: 'ॐ', shloka: 'વક્રતુંડ મહાકાય, સૂર્યકોટિ સમપ્રભ ।\nનિર્વિઘ્નં કુરુ મે દેવ, સર્વકાર્યેષુ સર્વદા ॥',
@@ -25,178 +34,296 @@ const sched = (d1, d2) => [
       { title: 'હસ્ત મેળાપ', lines: ['શુભ ચોઘડિયે'] }]
   },
 ]
-  const mk = (id, theme, template, title, groom, bride, d1, d2, badge, url = null, pdfTheme = null) => ({
-    id, theme, template, title, groom, bride, photos: { groom: null, bride: null },
-    dateLine: `તા. ${d2}, ગુરુવાર`, events: sched(d1, d2), venue, badge, url, pdfTheme,
-    inviters: [...f(2), 'સરનામું: ……………………, સુરત', 'મો. ………………………'],
-    family: { sneh: f(4), darshan: f(3), mosal: f(1), banej: ['પરમ, જાનવી, પ્રિયંક, વિધ્યા'], firm: ['………………………… ઈન્ડસ્ટ્રીઝ'] },
-  })
+const mk = (id, theme, template, title, groom, bride, d1, d2, badge, url = null, pdfTheme = null, coverImage = null) => ({
+  id, theme, template, title, groom, bride, photos: { groom: null, bride: null },
+  dateLine: `તા. ${d2}, ગુરુવાર`, events: sched(d1, d2), venue, badge, url, pdfTheme,
+  coverImage: coverImage || (
+    id === 'jasmat-aarti-gold' ? royalGoldCover :
+      id === 'jasmat-aarti-main' ? elegantWeddingCover :
+        id === 'swarna-elegance-royal' ? swarnaRoyalCover :
+          (id === 'royal-palace-jharokha' || id === 'darshan-ishita-royal') ? jharokhaCover :
+            (id === 'emerald-royal-envelope' || id === 'darshan-ishita-emerald') ? emeraldCover :
+              (id === 'marigold-petals-fall-live' || id === 'darshan-ishita-marigold') ? marigoldCover :
+                (id === 'wedding-lotus-new' || id === 'lotus-new-wed') ? lotusCover :
+                  (id === 'kishan-puran-moon-heart' || id === 'moon-heart') ? moonHeartCover :
+                    null
+  ),
+  inviters: [...f(2), 'સરનામું: ……………………, સુરત', 'મો. ………………………'],
+  family: { sneh: f(4), darshan: f(3), mosal: f(1), banej: ['પરમ, જાનવી, પ્રિયંક, વિધ્યા'], firm: ['………………………… ઈન્ડસ્ટ્રીઝ'] },
+})
 
 export const invitations = [
-    // 3 Distinct Layouts & Themes for Gujarati Digital PDF Invitations
-    // mk(
-    //   'gujarati-pdf-darbari',
-    //   'digitalKumkumGold',
-    //   'digital-pdf',
-    //   'ગુજરાતી કંકોતરી – ૧. દરબારી જરોખા (Royal Darbari Layout)',
-    //   'ચિ. દર્શન',
-    //   'ચિ. ઈશિતા',
-    //   '૧૨-૦૨-૨૦૨૫',
-    //   '૧૩-૦૨-૨૦૨૫',
-    //   'લેઆઉટ ૧ • દરબારી જરોખા',
-    //   null,
-    //   'darbari'
-    // ),
-    // mk(
-    //   'gujarati-pdf-heritage',
-    //   'digitalEmeraldRoyal',
-    //   'digital-pdf',
-    //   'ગુજરાતી કંકોતરી – ૨. શાહી પન્ના-મોરપિચ્છ (Heritage Peacock Layout)',
-    //   'ચિ. દર્શન',
-    //   'ચિ. ઈશિતા',
-    //   '૧૨-૦૨-૨૦૨૫',
-    //   '૧૩-૦૨-૨૦૨૫',
-    //   'લેઆઉટ ૨ • પન્ના-મોરપિચ્છ',
-    //   null,
-    //   'heritage'
-    // ),
-    // mk(
-    //   'gujarati-pdf-floral',
-    //   'digitalBlushRose',
-    //   'digital-pdf',
-    //   'ગુજરાતી કંકોતરી – ૩. મોડર્ન બોહો ફ્લોરલ (Boho Floral Layout)',
-    //   'ચિ. દર્શન',
-    //   'ચિ. ઈશિતા',
-    //   '૧૨-૦૨-૨૦૨૫',
-    //   '૧૩-૦૨-૨૦૨૫',
-    //   'લેઆઉટ ૩ • બોહો ફ્લોરલ',
-    //   null,
-    //   'floral'
-    // ),
+  // 3 Distinct Layouts & Themes for Gujarati Digital PDF Invitations
+  // mk(
+  //   'gujarati-pdf-darbari',
+  //   'digitalKumkumGold',
+  //   'digital-pdf',
+  //   'ગુજરાતી કંકોતરી – ૧. દરબારી જરોખા (Royal Darbari Layout)',
+  //   'ચિ. દર્શન',
+  //   'ચિ. ઈશિતા',
+  //   '૧૨-૦૨-૨૦૨૫',
+  //   '૧૩-૦૨-૨૦૨૫',
+  //   'લેઆઉટ ૧ • દરબારી જરોખા',
+  //   null,
+  //   'darbari'
+  // ),
+  // mk(
+  //   'gujarati-pdf-heritage',
+  //   'digitalEmeraldRoyal',
+  //   'digital-pdf',
+  //   'ગુજરાતી કંકોતરી – ૨. શાહી પન્ના-મોરપિચ્છ (Heritage Peacock Layout)',
+  //   'ચિ. દર્શન',
+  //   'ચિ. ઈશિતા',
+  //   '૧૨-૦૨-૨૦૨૫',
+  //   '૧૩-૦૨-૨૦૨૫',
+  //   'લેઆઉટ ૨ • પન્ના-મોરપિચ્છ',
+  //   null,
+  //   'heritage'
+  // ),
+  // mk(
+  //   'gujarati-pdf-floral',
+  //   'digitalBlushRose',
+  //   'digital-pdf',
+  //   'ગુજરાતી કંકોતરી – ૩. મોડર્ન બોહો ફ્લોરલ (Boho Floral Layout)',
+  //   'ચિ. દર્શન',
+  //   'ચિ. ઈશિતા',
+  //   '૧૨-૦૨-૨૦૨૫',
+  //   '૧૩-૦૨-૨૦૨૫',
+  //   'લેઆઉટ ૩ • બોહો ફ્લોરલ',
+  //   null,
+  //   'floral'
+  // ),
 
-    // Deployed Vercel Live Demos (Requested by user)
-    mk(
-      'jasmat-aarti-gold',
-      'royalGold',
-      'vercel-live',
-      'Jasmat & Aarti – Royal Gold Edition',
-      'ચિ. જસમત',
-      'ચિ. આરતી',
-      '૧૨-૦૨-૨૦૨૫',
-      '૧૩-૦૨-૨૦૨૫',
-      'Vercel Live Demo',
-      'https://aarti-jasmat-royal-gold.vercel.app/'
-    ),
-    mk(
-      'jasmat-aarti-main',
-      'roseRuby',
-      'vercel-live',
-      'Jasmat & Aarti – Special Wedding',
-      'ચિ. જસમત',
-      'ચિ. આરતી',
-      '૧૨-૦૨-૨૦૨૫',
-      '૧૩-૦૨-૨૦૨૫',
-      'Vercel Live Demo',
-      'https://jasmat-aarti.vercel.app/'
-    ),
-    mk(
-      'jasmat-aarti-basic',
-      'sapphireModern',
-      'vercel-live',
-      'Jasmat & Aarti – Classic Edition',
-      'ચિ. જસમત',
-      'ચિ. આરતી',
-      '૧૨-૦૨-૨૦૨૫',
-      '૧૩-૦૨-૨૦૨૫',
-      'Vercel Live Demo',
-      'https://jasmat-aarti-basic.vercel.app/'
-    ),
+  // Deployed Vercel Live Demos (Requested by user)
+  mk(
+    'jasmat-aarti-gold',
+    'royalGold',
+    'vercel-live',
+    'Royal Gold Wedding Invitation',
+    'ચિ. જસમત',
+    'ચિ. આરતી',
+    '૧૨-૦૨-૨૦૨૫',
+    '૧૩-૦૨-૨૦૨૫',
+    'Vercel Live Demo',
+    'https://aarti-jasmat-royal-gold.vercel.app/',
+    null,
+    royalGoldCover
+  ),
+  mk(
+    'jasmat-aarti-main',
+    'roseRuby',
+    'vercel-live',
+    'ચિ. જસમત',
+    'ચિ. આરતી',
+    '૧૨-૦૨-૨૦૨૫',
+    '૧૩-૦૨-૨૦૨૫',
+    'Vercel Live Demo',
+    'https://jasmat-aarti.vercel.app/',
+    null,
+    elegantWeddingCover
+  ),
+  mk(
+    'jasmat-aarti-basic',
+    'sapphireModern',
+    'vercel-live',
+    'Jasmat & Aarti – Classic Edition',
+    'ચિ. જસમત',
+    'ચિ. આરતી',
+    '૧૨-૦૨-૨૦૨૫',
+    '૧૩-૦૨-૨૦૨૫',
+    'Vercel Live Demo',
+    'https://jasmat-aarti-basic.vercel.app/'
+  ),
+  mk(
+    'swarna-elegance-royal',
+    'swarna3d',
+    'vercel-live',
+    'Swarna Elegance – Royal',
+    'ચિ. આયુષ',
+    'ચિ. રાધિકા',
+    '૧૨-૦૨-૨૦૨૫',
+    '૧૩-૦૨-૨૦૨૫',
+    'Vercel Live Demo',
+    'https://swarna-elegance-royal-invitation.vercel.app/',
+    null,
+    swarnaRoyalCover
+  ),
+  mk(
+    'royal-palace-jharokha',
+    'royal',
+    'vercel-live',
+    'Royal Palace Jharokha',
+    'ચિ. આયુષ',
+    'ચિ. રાધિકા',
+    '૧૨-૦૨-૨૦૨૫',
+    '૧૩-૦૨-૨૦૨૫',
+    'Vercel Live Demo',
+    'https://royal-palace-jharokha-invitation.vercel.app/',
+    null,
+    jharokhaCover
+  ),
+  mk(
+    'emerald-royal-envelope',
+    'emerald',
+    'vercel-live',
+    'Emerald Royal Envelope',
+    'ચિ. આયુષ',
+    'ચિ. રાધિકા',
+    '૧૨-૦૨-૨૦૨૫',
+    '૧૩-૦૨-૨૦૨૫',
+    'Vercel Live Demo',
+    'https://aj-emerald-royal-envelope-invitatio.vercel.app/',
+    null,
+    emeraldCover
+  ),
+  mk(
+    'marigold-petals-fall-live',
+    'marigold',
+    'vercel-live',
+    'Kishan & Puran – Marigold Petals Fall',
+    'ચિ. કિશન',
+    'ચિ. પૂરન',
+    '૨૭-૦૧-૨૦૨૭',
+    '૨૮-૦૧-૨૦૨૭',
+    'Vercel Live Demo',
+    'https://aj-marigold-petals-fall.vercel.app/',
+    null,
+    marigoldCover
+  ),
+  mk(
+    'wedding-lotus-new',
+    'lotusPink',
+    'vercel-live',
+    'Krunal & Mitali – Sacred Lotus Theme',
+    'ચિ. કૃણાલ',
+    'ચિ. મિતાલી',
+    '૧૫-૦૨-૨૦૨૭',
+    '૧૬-૦૨-૨૦૨૭',
+    'Vercel Live Demo',
+    'https://aj-wedding-lotus-new.vercel.app/',
+    null,
+    lotusCover
+  ),
+  mk(
+    'kishan-puran-moon-heart',
+    'moonHeart',
+    'vercel-live',
+    'Kishan & Puran – Moon Heart Theme',
+    'ચિ. કિશન',
+    'ચિ. પૂરન',
+    '૨૭-૦૧-૨૦૨૭',
+    '૨૮-૦૧-૨૦૨૭',
+    'Vercel Live Demo',
+    'https://aj-kishan-puran-invitation.vercel.app/',
+    null,
+    moonHeartCover
+  ),
 
-    // Built-in Interactive React Themes
-    mk('darshan-ishita-marigold', 'marigold', 'marigold', 'Marigold Block-print Theme', 'ચિ. દર્શન', 'ચિ. ઈશિતા', '૧૨-૦૨-૨૦૨૫', '૧૩-૦૨-૨૦૨૫', 'Horizontal Track'),
-    mk('darshan-ishita-royal', 'royal', 'royal', 'Royal Palace Jharokha Theme', 'ચિ. દર્શન', 'ચિ. ઈશિતા', '૧૨-૦૨-૨૦૨૫', '૧૩-૦૨-૨૦૨૫', 'Vertical Parallax & Diyas'),
-    mk('darshan-ishita-floral', 'floral', 'floral', 'Blush Floral & Blooming Card', 'ચિ. દર્શન', 'ચિ. ઈશિતા', '૧૨-૦૨-૨૦૨૫', '૧૩-૦૨-૨૦૨૫', 'Curtain Reveal & Petals'),
-    mk('darshan-ishita-orbit', 'twilight', 'orbit', '3D Orbit Coverflow Theme', 'ચિ. દર્શન', 'ચિ. ઈશિતા', '૧૨-૦૨-૨૦૨૫', '૧૩-૦૨-૨૦૨૫', 'Interactive 3D Deck'),
-    mk('darshan-ishita-emerald', 'emerald', 'emerald', 'Emerald Royal Envelope & Book', 'ચિ. દર્શન', 'ચિ. ઈશિતા', '૧૨-૦૨-૨૦૨૫', '૧૩-૦૨-૨૦૨૫', 'Wax Seal & 3D Turning Pages'),
-    mk('darshan-ishita-swarna-mandap', 'swarna3d', 'swarna-mandap', 'Swarna Elegance – Animated Royal Edition', 'ચિ. દર્શન', 'ચિ. ઈશિતા', '૧૨-૦૨-૨૦૨૫', '૧૩-૦૨-૨૦૨૫', 'Royal Elegance Edition'),
-  ]
+  // Built-in Interactive React Themes
+  // mk('darshan-ishita-marigold', 'marigold', 'marigold', 'Marigold Block-print Theme', 'ચિ. દર્શન', 'ચિ. ઈશિતા', '૧૨-૦૨-૨૦૨૫', '૧૩-૦૨-૨૦૨૫', 'Horizontal Track', null, null, marigoldCover),
+  // mk('darshan-ishita-royal', 'royal', 'royal', 'Royal Palace Jharokha Theme', 'ચિ. દર્શન', 'ચિ. ઈશિતા', '૧૨-૦૨-૨૦૨૫', '૧૩-૦૨-૨૦૨૫', 'Vertical Parallax & Diyas', null, null, jharokhaCover),
+  mk('darshan-ishita-floral', 'floral', 'floral', 'Blush Floral & Blooming Card', 'ચિ. દર્શન', 'ચિ. ઈશિતા', '૧૨-૦૨-૨૦૨૫', '૧૩-૦૨-૨૦૨૫', 'Curtain Reveal & Petals'),
+  mk('darshan-ishita-orbit', 'twilight', 'orbit', '3D Orbit Coverflow Theme', 'ચિ. દર્શન', 'ચિ. ઈશિતા', '૧૨-૦૨-૨૦૨૫', '૧૩-૦૨-૨૦૨૫', 'Interactive 3D Deck'),
+  // mk('darshan-ishita-emerald', 'emerald', 'emerald', 'Emerald Royal Envelope & Book', 'ચિ. દર્શન', 'ચિ. ઈશિતા', '૧૨-૦૨-૨૦૨૫', '૧૩-૦૨-૨૦૨૫', 'Wax Seal & 3D Turning Pages', null, null, emeraldCover),
+  mk('darshan-ishita-swarna-mandap', 'swarna3d', 'swarna-mandap', 'Swarna Elegance – Animated Royal Edition', 'ચિ. દર્શન', 'ચિ. ઈશિતા', '૧૨-૦૨-૨૦૨૫', '૧૩-૦૨-૨૦૨૫', 'Royal Elegance Edition'),
+]
 
 export const themes = {
-    digitalKumkumGold: {
-      name: 'રાજવી કંકુ-સોનેરી કંકોતરી (PDF)',
-      glyph: '📜',
-      bg: 'radial-gradient(ellipse at 50% 30%, #5a0918, #200206 75%)',
-      card: 'linear-gradient(160deg, #3d050f, #1c0206)',
-      ink: '#fff7ed',
-      accent: '#d4af37',
-      f1: '#ffd700',
-      f2: '#fff2b2',
-    },
-    digitalEmeraldRoyal: {
-      name: 'શાહી પન્ના કંકોતરી (PDF)',
-      glyph: '🦚',
-      bg: 'radial-gradient(ellipse at 50% 30%, #083c2e, #021a13 75%)',
-      card: 'linear-gradient(160deg, #093327, #031711)',
-      ink: '#f0fdf4',
-      accent: '#eab308',
-      f1: '#fef08a',
-      f2: '#fef9c3',
-    },
-    digitalBlushRose: {
-      name: 'ગુલાબી રોઝ કંકોતરી (PDF)',
-      glyph: '🌸',
-      bg: 'radial-gradient(ellipse at 50% 30%, #fee2e2, #fca5a5 75%)',
-      card: 'linear-gradient(160deg, #fffcf9, #fdf2f4)',
-      ink: '#4c0519',
-      accent: '#f43f5e',
-      f1: '#be123c',
-      f2: '#fb7185',
-    },
-    royalGold: {
-      name: 'Aarti & Jasmat Royal Gold',
-      glyph: '👑',
-      bg: 'radial-gradient(ellipse at 50% 30%, #543d0e, #1a1202 75%)',
-      card: 'linear-gradient(160deg, #3d2b07, #1f1502)',
-      ink: '#fff6d6',
-      accent: '#f3cf6d',
-      f1: '#dfab31',
-      f2: '#fff2b8',
-    },
-    roseRuby: {
-      name: 'Jasmat & Aarti Special',
-      glyph: '💖',
-      bg: 'radial-gradient(ellipse at 50% 30%, #57122a, #1a040b 75%)',
-      card: 'linear-gradient(160deg, #420d20, #20040c)',
-      ink: '#ffeef4',
-      accent: '#ff85a1',
-      f1: '#f72585',
-      f2: '#ffb3c6',
-    },
-    sapphireModern: {
-      name: 'Jasmat & Aarti Classic',
-      glyph: '✨',
-      bg: 'radial-gradient(ellipse at 50% 30%, #0d2c54, #041021 75%)',
-      card: 'linear-gradient(160deg, #09203f, #030e1d)',
-      ink: '#e6f4f1',
-      accent: '#48cae4',
-      f1: '#0077b6',
-      f2: '#90e0ef',
-    },
-    marigold: { name: 'Marigold Block-print', glyph: '🌼', bg: 'linear-gradient(160deg,#f5a623,#e8590c)', card: '#fff4d6', ink: '#4a1d2b', accent: '#c2185b', f1: '#c2185b', f2: '#e8590c' },
-    royal: { name: 'Royal Palace Jharokha', glyph: '🪔', bg: 'radial-gradient(circle at 50% 30%,#7a1a2c,#2a0710 75%)', card: 'linear-gradient(rgba(60,10,22,.85),rgba(25,5,12,.92))', ink: '#fff6e2', accent: '#e6bd5c', f1: '#c79a2e', f2: '#fff3c0' },
-    floral: { name: 'Blush Floral & Petals', glyph: '🌸', bg: 'linear-gradient(#fff1ee,#f4b6c2)', card: 'linear-gradient(#fffdf8,#fff6ec)', ink: '#4a2433', accent: '#b76e79', f1: '#8e3b55', f2: '#e08a8f' },
-    twilight: { name: '3D Orbit Coverflow', glyph: '✦', bg: 'radial-gradient(ellipse at 50% 35%,#16224a,#070b1c 70%)', card: 'linear-gradient(160deg,#fffaf0,#f1e4c4)', ink: '#1b2340', accent: '#c9a24a', f1: '#7a5614', f2: '#e0b650' },
-    emerald: { name: 'Emerald Wax-Seal Book', glyph: '🍃', bg: 'linear-gradient(#0f4a3a,#041a14)', card: 'linear-gradient(#fffaf0,#f1e4c4)', ink: '#23382d', accent: '#c9a24a', f1: '#0f5a46', f2: '#c79a35' },
-    swarna3d: {
-      name: 'Swarna Elegance & Animated Royal Palace',
-      glyph: '⚜️',
-      bg: 'radial-gradient(ellipse at 50% 30%, #46091e, #100208 75%)',
-      card: 'linear-gradient(160deg, #fffcf3, #f7e8c3)',
-      ink: '#2b0f19',
-      accent: '#d4af37',
-      f1: '#c4972e',
-      f2: '#fff2b0',
-    },
-  }
+  digitalKumkumGold: {
+    name: 'રાજવી કંકુ-સોનેરી કંકોતરી (PDF)',
+    glyph: '📜',
+    bg: 'radial-gradient(ellipse at 50% 30%, #5a0918, #200206 75%)',
+    card: 'linear-gradient(160deg, #3d050f, #1c0206)',
+    ink: '#fff7ed',
+    accent: '#d4af37',
+    f1: '#ffd700',
+    f2: '#fff2b2',
+  },
+  digitalEmeraldRoyal: {
+    name: 'શાહી પન્ના કંકોતરી (PDF)',
+    glyph: '🦚',
+    bg: 'radial-gradient(ellipse at 50% 30%, #083c2e, #021a13 75%)',
+    card: 'linear-gradient(160deg, #093327, #031711)',
+    ink: '#f0fdf4',
+    accent: '#eab308',
+    f1: '#fef08a',
+    f2: '#fef9c3',
+  },
+  digitalBlushRose: {
+    name: 'ગુલાબી રોઝ કંકોતરી (PDF)',
+    glyph: '🌸',
+    bg: 'radial-gradient(ellipse at 50% 30%, #fee2e2, #fca5a5 75%)',
+    card: 'linear-gradient(160deg, #fffcf9, #fdf2f4)',
+    ink: '#4c0519',
+    accent: '#f43f5e',
+    f1: '#be123c',
+    f2: '#fb7185',
+  },
+  royalGold: {
+    name: 'Aarti & Jasmat Royal Gold',
+    glyph: '👑',
+    bg: 'radial-gradient(ellipse at 50% 30%, #543d0e, #1a1202 75%)',
+    card: 'linear-gradient(160deg, #3d2b07, #1f1502)',
+    ink: '#fff6d6',
+    accent: '#f3cf6d',
+    f1: '#dfab31',
+    f2: '#fff2b8',
+  },
+  roseRuby: {
+    name: 'Jasmat & Aarti Special',
+    glyph: '💖',
+    bg: 'radial-gradient(ellipse at 50% 30%, #57122a, #1a040b 75%)',
+    card: 'linear-gradient(160deg, #420d20, #20040c)',
+    ink: '#ffeef4',
+    accent: '#ff85a1',
+    f1: '#f72585',
+    f2: '#ffb3c6',
+  },
+  sapphireModern: {
+    name: 'Jasmat & Aarti Classic',
+    glyph: '✨',
+    bg: 'radial-gradient(ellipse at 50% 30%, #0d2c54, #041021 75%)',
+    card: 'linear-gradient(160deg, #09203f, #030e1d)',
+    ink: '#e6f4f1',
+    accent: '#48cae4',
+    f1: '#0077b6',
+    f2: '#90e0ef',
+  },
+  marigold: { name: 'Marigold Block-print', glyph: '🌼', bg: 'linear-gradient(160deg,#f5a623,#e8590c)', card: '#fff4d6', ink: '#4a1d2b', accent: '#c2185b', f1: '#c2185b', f2: '#e8590c' },
+  royal: { name: 'Royal Palace Jharokha', glyph: '🪔', bg: 'radial-gradient(circle at 50% 30%,#7a1a2c,#2a0710 75%)', card: 'linear-gradient(rgba(60,10,22,.85),rgba(25,5,12,.92))', ink: '#fff6e2', accent: '#e6bd5c', f1: '#c79a2e', f2: '#fff3c0' },
+  floral: { name: 'Blush Floral & Petals', glyph: '🌸', bg: 'linear-gradient(#fff1ee,#f4b6c2)', card: 'linear-gradient(#fffdf8,#fff6ec)', ink: '#4a2433', accent: '#b76e79', f1: '#8e3b55', f2: '#e08a8f' },
+  twilight: { name: '3D Orbit Coverflow', glyph: '✦', bg: 'radial-gradient(ellipse at 50% 35%,#16224a,#070b1c 70%)', card: 'linear-gradient(160deg,#fffaf0,#f1e4c4)', ink: '#1b2340', accent: '#c9a24a', f1: '#7a5614', f2: '#e0b650' },
+  emerald: { name: 'Emerald Wax-Seal Book', glyph: '🍃', bg: 'linear-gradient(#0f4a3a,#041a14)', card: 'linear-gradient(#fffaf0,#f1e4c4)', ink: '#23382d', accent: '#c9a24a', f1: '#0f5a46', f2: '#c79a35' },
+  swarna3d: {
+    name: 'Swarna Elegance & Animated Royal Palace',
+    glyph: '⚜️',
+    bg: 'radial-gradient(ellipse at 50% 30%, #46091e, #100208 75%)',
+    card: 'linear-gradient(160deg, #fffcf3, #f7e8c3)',
+    ink: '#2b0f19',
+    accent: '#d4af37',
+    f1: '#c4972e',
+    f2: '#fff2b0',
+  },
+  lotusPink: {
+    name: 'Sacred Lotus Wedding',
+    glyph: '🪷',
+    bg: 'radial-gradient(ellipse at 50% 30%, #4a0d26, #16020b 75%)',
+    card: 'linear-gradient(160deg, #fff5f8, #fce4ec)',
+    ink: '#3d071e',
+    accent: '#e11d48',
+    f1: '#be123c',
+    f2: '#fda4af',
+  },
+  moonHeart: {
+    name: 'Moon Heart Theme',
+    glyph: '🌙',
+    bg: 'radial-gradient(ellipse at 50% 30%, #17113b, #070417 75%)',
+    card: 'linear-gradient(160deg, #1f1747, #0c0822)',
+    ink: '#ede9fe',
+    accent: '#8b5cf6',
+    f1: '#a78bfa',
+    f2: '#ddd6fe',
+  },
+}
 
 export const pagesOf = () => ['cover', 'invite', 'events', 'family']

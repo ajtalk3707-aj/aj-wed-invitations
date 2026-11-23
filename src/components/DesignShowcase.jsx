@@ -69,28 +69,53 @@ function TiltCard({ inv, t, onOpen, index, lang, showcaseT }) {
           )}
         </div>
 
-        {/* Center Royal Arch with 3D Depth */}
-        <div
-          style={{ transform: 'translateZ(50px)', transformStyle: 'preserve-3d' }}
-          className="mx-auto mt-6 w-4/5 rounded-t-[8rem] rounded-b-2xl px-3 pb-6 pt-12 shadow-xl text-center"
-        >
+        {/* Center Visual: Real Photo Preview OR Royal Arch */}
+        {inv.coverImage ? (
           <div
-            className="absolute inset-0 rounded-t-[8rem] rounded-b-2xl pointer-events-none"
-            style={{
-              background: t.card,
-              border: `1px solid ${t.accent}`,
-              boxShadow: `0 0 0 4px rgba(0,0,0,.2), 0 0 0 5px ${t.accent}`,
-            }}
-          />
-          <div className="relative" style={{ color: t.ink }}>
-            <div className="text-3xl filter drop-shadow">{t.glyph}</div>
-            <div className="foil font-display text-2xl font-extrabold mt-1">{L.title}</div>
-            <div className="foil mt-2 font-display text-xl font-extrabold">{inv.groom}</div>
-            <div className="text-xs font-semibold opacity-90">{L.with}</div>
-            <div className="foil font-display text-xl font-extrabold">{inv.bride}</div>
-            <div className="mt-2 font-display text-xs font-bold opacity-80">{inv.dateLine}</div>
+            style={{ transform: 'translateZ(50px)', transformStyle: 'preserve-3d' }}
+            className="mx-auto mt-6 w-full h-[18rem] rounded-2xl overflow-hidden shadow-2xl relative border-2 border-amber-400/50 group-hover:border-amber-300 transition-all duration-300 bg-black/40"
+          >
+            <img
+              src={inv.coverImage}
+              alt={inv.title}
+              className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            />
+            {/* Subtle Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
+
+            {/* Couple overlay badge */}
+            <div className="absolute bottom-2.5 inset-x-2 text-center text-white drop-shadow">
+              <div className="text-sm font-bold text-amber-200 tracking-wide font-display">
+                {inv.groom} {L.with} {inv.bride}
+              </div>
+              <div className="text-[11px] text-amber-100/90 font-medium">
+                {inv.dateLine}
+              </div>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div
+            style={{ transform: 'translateZ(50px)', transformStyle: 'preserve-3d' }}
+            className="mx-auto mt-6 w-4/5 rounded-t-[8rem] rounded-b-2xl px-3 pb-6 pt-12 shadow-xl text-center"
+          >
+            <div
+              className="absolute inset-0 rounded-t-[8rem] rounded-b-2xl pointer-events-none"
+              style={{
+                background: t.card,
+                border: `1px solid ${t.accent}`,
+                boxShadow: `0 0 0 4px rgba(0,0,0,.2), 0 0 0 5px ${t.accent}`,
+              }}
+            />
+            <div className="relative" style={{ color: t.ink }}>
+              <div className="text-3xl filter drop-shadow">{t.glyph}</div>
+              <div className="foil font-display text-2xl font-extrabold mt-1">{L.title}</div>
+              <div className="foil mt-2 font-display text-xl font-extrabold">{inv.groom}</div>
+              <div className="text-xs font-semibold opacity-90">{L.with}</div>
+              <div className="foil font-display text-xl font-extrabold">{inv.bride}</div>
+              <div className="mt-2 font-display text-xs font-bold opacity-80">{inv.dateLine}</div>
+            </div>
+          </div>
+        )}
 
         {/* Bottom Details with translateZ(80px) */}
         <div style={{ transform: 'translateZ(80px)' }} className="absolute inset-x-0 bottom-4 px-4 text-white drop-shadow text-center">
@@ -146,16 +171,16 @@ export default function DesignShowcase({ list, onOpen, lang, t }) {
   const filteredList = useMemo(() => {
     if (activeCategory === 'all') return list
     if (activeCategory === 'royal') {
-      return list.filter(i => i.template === 'swarna-mandap' || i.template === 'royal' || i.theme === 'royalGold')
+      return list.filter(i => i.template === 'swarna-mandap' || i.template === 'royal' || i.theme === 'royalGold' || i.theme === 'swarna3d')
     }
     if (activeCategory === 'live') {
       return list.filter(i => i.template === 'vercel-live')
     }
     if (activeCategory === 'floral') {
-      return list.filter(i => i.template === 'floral' || i.template === 'marigold' || i.theme === 'marigold')
+      return list.filter(i => i.template === 'floral' || i.template === 'marigold' || i.theme === 'marigold' || i.theme === 'lotusPink')
     }
     if (activeCategory === 'orbit') {
-      return list.filter(i => i.template === 'orbit' || i.template === 'emerald')
+      return list.filter(i => i.template === 'orbit' || i.template === 'emerald' || i.theme === 'emerald' || i.theme === 'moonHeart')
     }
     return list
   }, [activeCategory, list])
@@ -187,11 +212,10 @@ export default function DesignShowcase({ list, onOpen, lang, t }) {
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`rounded-full px-4 py-2 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
-                activeCategory === cat.id
-                  ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-black shadow-[0_0_15px_rgba(245,158,11,0.5)] scale-105'
-                  : 'bg-[#181133] border border-amber-500/30 text-amber-200 hover:bg-amber-500/15 hover:border-amber-400/60'
-              }`}
+              className={`rounded-full px-4 py-2 text-xs sm:text-sm font-bold transition-all cursor-pointer ${activeCategory === cat.id
+                ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-black shadow-[0_0_15px_rgba(245,158,11,0.5)] scale-105'
+                : 'bg-[#181133] border border-amber-500/30 text-amber-200 hover:bg-amber-500/15 hover:border-amber-400/60'
+                }`}
             >
               {cat.label}
             </button>
